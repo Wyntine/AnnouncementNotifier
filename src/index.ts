@@ -1,3 +1,4 @@
 import { Checker } from "./classes/Checker.js";
 
-void new Checker().start();
+const checker = new Checker();
+console.log(await checker.refresh());
