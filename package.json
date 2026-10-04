@@ -1,0 +1,63 @@
+{
+  "name": "announcement-tracker",
+  "version": "1.2.0",
+  "description": "",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "tsx src/index.ts",
+    "build": "tsdown",
+    "prepack": "run-s lint build",
+    "lint": "run-s typeCheck eslint",
+    "eslint": "eslint --fix ./src",
+    "typeCheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "announcement",
+    "tracker",
+    "typescript",
+    "wyntine"
+  ],
+  "author": "Wyntine",
+  "license": "MIT",
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@tsconfig/strictest": "^2.0.8",
+    "@types/eslint__js": "^9.14.0",
+    "@types/node": "^26.6.3",
+    "@wyntine/prettier-config": "^1.1.1",
+    "npm-run-all": "^4.1.5",
+    "prettier-eslint": "^17.1.2",
+    "tsdown": "^0.23.0",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.71.0"
+  },
+  "dependencies": {
+    "@types/html-to-text": "^9.0.4",
+    "cheerio": "^1.1.2",
+    "html-to-text": "^9.0.5",
+    "tsx": "^4.20.6",
+    "yaml": "^2.8.1"
+  },
+  "prettier": "@wyntine/prettier-config",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "homepage": "https://github.com/Wyntine/AnnouncementTracker#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Wyntine/AnnouncementTracker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Wyntine/AnnouncementTracker/issues"
+  },
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "allowScripts": {
+    "esbuild@0.28.2": true
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "extends": "./node_modules/@tsconfig/strictest/tsconfig.json",
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "target": "esnext",
+    "verbatimModuleSyntax": true,
+    "resolveJsonModule": true,
+    "moduleDetection": "force",
+    "strict": true,
+
+    /** If compiling (TS -> JS) */
+    "moduleResolution": "NodeNext",
+    "module": "NodeNext",
+    "outDir": "dist",
+    "sourceMap": true,
+
+    /** If not compiling */
+    // "moduleResolution": "bundler",
+    // "module": "esnext",
+    // "noEmit": true,
+    // "allowImportingTsExtensions": true,
+
+    "rewriteRelativeImportExtensions": true,
+    "erasableSyntaxOnly": true,
+    "rootDir": "src",
+    "removeComments": true,
+    "types": ["node"],
+    "lib": ["ES2024"]
+  },
+  "include": ["src/**/*.ts"]
+}

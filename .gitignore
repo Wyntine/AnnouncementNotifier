@@ -1,0 +1,18 @@
+# Base files
+
+node_modules
+coverage
+
+# Lock files other than package-lock.json
+
+pnpm-lock.yaml
+yarn.lock
+bun.lock
+
+# Build files
+
+dist
+
+# Extra files
+
+database/announcements.yml
