@@ -1,9 +1,9 @@
 import {
   normalizeUnevenHTMLToArray,
   parseLinkByType,
-} from "../../utils/string.ts";
-import { forceUTCTime } from "../../utils/time.ts";
-import { Parser } from "../Parser.ts";
+} from "../../../utils/string.ts";
+import { forceUTCTime } from "../../../utils/time.ts";
+import { Parser } from "../../Parser.ts";
 import { load } from "cheerio";
 
 export class CSParser extends Parser {
