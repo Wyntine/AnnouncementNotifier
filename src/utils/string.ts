@@ -34,7 +34,9 @@ export function parseLinkByType(links: string[]): LinkParseResult {
         .slice(1)
         .at(-1);
 
-      if (linkExtension?.includes(".")) {
+      // TODO: Find a better way to filter for attachment extensions in the future
+      // TODO: without defining a static file extension list.
+      if (linkExtension?.includes(".") && !linkExtension.includes(".html")) {
         prev.files.push(curr);
       } else {
         prev.links.push(curr);
