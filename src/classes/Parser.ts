@@ -5,6 +5,12 @@ export class Parser {
   public baseSite: string;
   public sites: string | SubParsers;
 
+  /**
+   * @param name The parser's base name
+   * @param baseSite The site to be parsed
+   * @param sites Relative paths of (starting with `/`) sites that will be parsed.
+   *  Can be mapped to assign sub-parsers to specific sites.
+   */
   constructor(name: string, baseSite: string, sites?: string | SubParsers) {
     this.name = name;
     this.baseSite = baseSite;
@@ -22,7 +28,7 @@ export class Parser {
    * Changes the link to ensure that the link starts with "https://"
    * and if it's a relative path, adds the base site URL.
    */
-  protected addBaseSite(link: string) {
+  public addBaseSite(link: string) {
     return (
       link.startsWith("http") ? link
       : link.startsWith("/") ? `https://${this.baseSite}${link}`
