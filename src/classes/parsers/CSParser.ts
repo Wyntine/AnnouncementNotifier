@@ -1,4 +1,10 @@
+import {
+  normalizeUnevenHTMLToArray,
+  parseLinkByType,
+} from "../../utils/string.ts";
+import { forceUTCTime } from "../../utils/time.ts";
 import { Parser } from "../Parser.ts";
+import { load } from "cheerio";
 
 export class CSParser extends Parser {
   constructor() {
@@ -9,15 +15,36 @@ export class CSParser extends Parser {
     );
   }
 
+  // TODO: Add HTML-like href functionality later.
   public override parse(siteData: string) {
     const data = JSON.parse(siteData) as CSAPIAnnouncement[];
-    // TODO: Maybe sanitize/format given raw HTML data.
-    return data.map((ann) => ({
-      id: ann.id,
-      date: +new Date(ann.date.split(".").toReversed().join("-")),
-      title: ann.title,
-      description: ann.body,
-    }));
+    return data.map((ann) => {
+      const { id, date, title, body } = ann;
+      const $ = load(body);
+      const t = load(title);
+
+      const additionalData = $.extract({
+        links: [
+          {
+            selector: "a",
+            value: (el) => {
+              const link = $(el).attr("href");
+              return link && this.addBaseSite(link);
+            },
+          },
+        ],
+      });
+
+      const links = parseLinkByType(additionalData.links);
+
+      return {
+        id,
+        date: forceUTCTime(date.split(".").toReversed().join("-")).valueOf(),
+        title: t.text(),
+        description: normalizeUnevenHTMLToArray($.text()),
+        ...links,
+      };
+    });
   }
 }
 
