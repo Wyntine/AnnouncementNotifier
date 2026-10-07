@@ -6,7 +6,16 @@ export interface ParsedAnnouncement {
   id?: string;
   date: number;
   title: string;
-  description?: string;
+  /**
+   * Texts splitted by two new lines
+   */
+  description?: string[];
+  /**
+   * General links related to the announcement
+   */
   links?: string[];
+  /**
+   * Attachments such as image, PDF, and text files
+   */
   files?: string[];
 }
