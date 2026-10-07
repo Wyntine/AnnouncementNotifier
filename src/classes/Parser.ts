@@ -3,15 +3,12 @@ import type { ParsedAnnouncement } from "../types/announcements.ts";
 export class Parser {
   public name: string;
   public baseSite: string;
-  public sites: string[];
+  public sites: string | SubParsers;
 
-  constructor(name: string, baseSite: string, sites?: string | string[]) {
+  constructor(name: string, baseSite: string, sites?: string | SubParsers) {
     this.name = name;
     this.baseSite = baseSite;
-    this.sites =
-      !sites ? [baseSite]
-      : typeof sites === "string" ? [sites]
-      : sites;
+    this.sites = sites ?? baseSite;
   }
 
   // @ts-expect-error Unused variable error
@@ -34,3 +31,8 @@ export class Parser {
     );
   }
 }
+
+/**
+ * A record that consists of <sub parser name, parsed website name>
+ */
+type SubParsers = Record<string, string>;

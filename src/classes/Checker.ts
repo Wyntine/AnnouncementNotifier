@@ -17,27 +17,40 @@ export class Checker {
     const announcements: AnnouncementSchema[] = [];
 
     for (const parser of this.parsers) {
-      for (const siteUrl of parser.sites) {
-        const request = await fetch(siteUrl);
+      const sites = parser.sites;
+      const name = parser.name;
 
-        if (!request.ok) {
-          // TODO: Error log
-          continue;
+      if (typeof sites === "string") {
+        announcements.push(...(await this.runParser(parser, name, sites)));
+      } else {
+        for (const [sub, siteUrl] of Object.entries(sites)) {
+          announcements.push(
+            ...(await this.runParser(parser, `${name}-${sub}`, siteUrl)),
+          );
         }
-
-        const siteData = await request.text();
-        const parserAnnouncements: AnnouncementSchema[] = parser
-          .parse(siteData)
-          .map((announcement) => ({
-            ...announcement,
-            parser: parser.name,
-          }));
-
-        announcements.push(...parserAnnouncements);
       }
     }
 
     return announcements;
+  }
+
+  public async runParser(
+    parser: Parser,
+    parserName: string,
+    siteUrl: string,
+  ): Promise<AnnouncementSchema[]> {
+    const request = await fetch(siteUrl);
+
+    if (!request.ok) {
+      // TODO: Error log
+      return [];
+    }
+
+    const siteData = await request.text();
+    return parser.parse(siteData).map((announcement) => ({
+      ...announcement,
+      parser: parserName,
+    }));
   }
 
   private async wait() {
