@@ -39,7 +39,7 @@ export class Checker {
     parserName: string,
     siteUrl: string,
   ): Promise<AnnouncementSchema[]> {
-    const request = await fetch(siteUrl);
+    const request = await fetch(parser.addBaseSite(siteUrl));
 
     if (!request.ok) {
       // TODO: Error log

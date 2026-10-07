@@ -14,7 +14,7 @@ import { load } from "cheerio";
  */
 export class AIParser extends Parser {
   constructor() {
-    super("ai", "ai.hacettepe.edu.tr", "https://ai.hacettepe.edu.tr/news.html");
+    super("ai", "ai.hacettepe.edu.tr", "/news.html");
   }
 
   public override parse(siteData: string) {

@@ -8,11 +8,7 @@ import { load } from "cheerio";
 
 export class CSParser extends Parser {
   constructor() {
-    super(
-      "cs",
-      "cs.hacettepe.edu.tr",
-      "https://cs.hacettepe.edu.tr/json/announcements.json",
-    );
+    super("cs", "cs.hacettepe.edu.tr", "/json/announcements.json");
   }
 
   // TODO: Add HTML-like href functionality later.
