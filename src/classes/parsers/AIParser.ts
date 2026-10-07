@@ -72,16 +72,6 @@ export class AIParser extends Parser {
       ...extractConditionally(ann, "id"),
     }));
 
-    // console.log(JSON.stringify(result));
-
-    // -> attribs.datetime
-    // -> children.at(0).data
-
-    announcements.forEach((a) => {
-      console.log(a.description);
-      console.log("-".repeat(50));
-    });
-
     return announcements;
   }
 }
