@@ -1,7 +1,7 @@
 import type { AnnouncementSchema } from "../types/announcements.ts";
 import type { Parser } from "./Parser.ts";
-import { AIParser } from "./parsers/AIParser.ts";
-import { CSParser } from "./parsers/CSParser.ts";
+import { AIParser } from "./parsers/bbbf/AIParser.ts";
+import { CSParser } from "./parsers/bbbf/CSParser.ts";
 import { YamlDatabase } from "./YamlDatabase.ts";
 
 export class Checker {
