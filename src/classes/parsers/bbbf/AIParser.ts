@@ -1,7 +1,7 @@
-import { extractConditionally } from "../../utils/objects.ts";
-import { normalizeUnevenHTML, parseLinkByType } from "../../utils/string.ts";
-import { forceUTCTime, getNewerDate } from "../../utils/time.ts";
-import { Parser } from "../Parser.ts";
+import { extractConditionally } from "../../../utils/objects.ts";
+import { normalizeUnevenHTML, parseLinkByType } from "../../../utils/string.ts";
+import { forceUTCTime, getNewerDate } from "../../../utils/time.ts";
+import { Parser } from "../../Parser.ts";
 import { load } from "cheerio";
 
 /**
