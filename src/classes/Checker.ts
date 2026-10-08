@@ -1,11 +1,17 @@
 import type { AnnouncementSchema } from "../types/announcements.ts";
+import { fetchSchoolSitesWithTLSOff, isRequestOk } from "../utils/network.ts";
 import type { Parser } from "./Parser.ts";
 import { AIParser } from "./parsers/bbbf/AIParser.ts";
 import { CSParser } from "./parsers/bbbf/CSParser.ts";
+import { YDYOParser } from "./parsers/YDYOParser.ts";
 import { YamlDatabase } from "./YamlDatabase.ts";
 
 export class Checker {
-  private parsers: Parser[] = [new CSParser(), new AIParser()];
+  private parsers: Parser[] = [
+    new CSParser(),
+    new AIParser(),
+    new YDYOParser(),
+  ];
   private database = new YamlDatabase();
 
   /**
@@ -31,7 +37,7 @@ export class Checker {
       }
     }
 
-    return announcements;
+    return announcements.toSorted((ann1, ann2) => ann2.date - ann1.date);
   }
 
   public async runParser(
@@ -39,15 +45,17 @@ export class Checker {
     parserName: string,
     siteUrl: string,
   ): Promise<AnnouncementSchema[]> {
-    const request = await fetch(parser.addBaseSite(siteUrl));
+    const request = await fetchSchoolSitesWithTLSOff(
+      parser.addBaseSite(siteUrl),
+    );
 
-    if (!request.ok) {
+    if (!isRequestOk(request.statusCode)) {
       // TODO: Error log
       return [];
     }
 
-    const siteData = await request.text();
-    return parser.parse(siteData).map((announcement) => ({
+    const siteData = await request.body.text();
+    return (await parser.parse(siteData)).map((announcement) => ({
       ...announcement,
       parser: parserName,
     }));
