@@ -5,7 +5,11 @@ import {
   normalizeUnevenHTML,
   parseLinkByType,
 } from "../utils/string.ts";
-import { fetchSchoolSitesWithTLSOff, isRequestOk } from "../utils/network.ts";
+import {
+  fetchSchoolSitesWithTLSOff,
+  isRequestOk,
+  isUnreachable,
+} from "../utils/network.ts";
 
 export class Parser {
   public name: string;
@@ -61,13 +65,17 @@ export class Parser {
           continue;
         }
 
+        const isFile =
+          isLinkAFile(link) ||
+          (!link.includes("hacettepe.edu.tr") && !link.startsWith("/"));
+
+        if (!isFile && isUnreachable(link)) {
+          // TODO: Error log
+          continue;
+        }
+
         const links = parseLinkByType(
-          (
-            isLinkAFile(link) ||
-              (!link.includes("hacettepe.edu.tr") && !link.startsWith("/"))
-          ) ?
-            [link]
-          : await this.parseSubSite(link),
+          isFile ? [link] : await this.parseSubSite(link),
         );
 
         announcements.push({

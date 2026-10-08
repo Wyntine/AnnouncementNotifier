@@ -1,5 +1,7 @@
 import { Agent } from "undici";
 
+export const unreachableSites = ["etkinlikler.hacettepe.edu.tr"];
+
 export async function fetchSchoolSitesWithTLSOff(url: string) {
   const urlData = new URL(url);
   const { origin, pathname: path } = urlData;
@@ -20,4 +22,10 @@ export function isRequestOk(statusCode: number): boolean {
 
 export function urlOrigin(url: string): string {
   return new URL(url).origin;
+}
+
+// TODO: Implement solid error handling later
+export function isUnreachable(url: string) {
+  const origin = urlOrigin(url);
+  return unreachableSites.find((site) => origin.includes(site));
 }
