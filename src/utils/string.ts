@@ -24,10 +24,13 @@ export function normalizeUnevenHTML(text: string): string {
  * @see {@link LinkParseResult} - Returned object
  * @see {@link isLinkAFile()}
  */
-export function parseLinkByType(links: string[]): LinkParseResult {
+export function parseLinkByType(
+  links: string[],
+  fileUrls?: string[],
+): LinkParseResult {
   const result = links.reduce(
     (prev, link) => {
-      if (isLinkAFile(link)) {
+      if (isLinkAFile(link) || fileUrls?.includes(link)) {
         prev.files.push(link);
       } else {
         prev.links.push(link);
