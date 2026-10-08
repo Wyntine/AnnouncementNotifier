@@ -2,12 +2,14 @@ import type { AnnouncementSchema } from "../types/announcements.ts";
 import { fetchSchoolSitesWithTLSOff, isRequestOk } from "../utils/network.ts";
 import type { Parser } from "./Parser.ts";
 import { AIParser } from "./parsers/bbbf/AIParser.ts";
+import { BBBFParser } from "./parsers/bbbf/BBBFParser.ts";
 import { CSParser } from "./parsers/bbbf/CSParser.ts";
 import { YDYOParser } from "./parsers/YDYOParser.ts";
 import { YamlDatabase } from "./YamlDatabase.ts";
 
 export class Checker {
   private parsers: Parser[] = [
+    new BBBFParser(),
     new CSParser(),
     new AIParser(),
     new YDYOParser(),
