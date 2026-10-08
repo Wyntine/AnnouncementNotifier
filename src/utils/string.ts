@@ -22,24 +22,15 @@ export function normalizeUnevenHTML(text: string): string {
  * - `files` array will have links ending with an extension name.
  * - `links` array will have other links.
  * @see {@link LinkParseResult} - Returned object
+ * @see {@link isLinkAFile()}
  */
 export function parseLinkByType(links: string[]): LinkParseResult {
   const result = links.reduce(
-    (prev, curr) => {
-      const linkExtension = curr
-        .split("//")
-        .slice(1)
-        .join("//")
-        .split("/")
-        .slice(1)
-        .at(-1);
-
-      // TODO: Find a better way to filter for attachment extensions in the future
-      // TODO: without defining a static file extension list.
-      if (linkExtension?.includes(".") && !linkExtension.includes(".html")) {
-        prev.files.push(curr);
+    (prev, link) => {
+      if (isLinkAFile(link)) {
+        prev.files.push(link);
       } else {
-        prev.links.push(curr);
+        prev.links.push(link);
       }
 
       return prev;
@@ -53,4 +44,13 @@ export function parseLinkByType(links: string[]): LinkParseResult {
   if (result.links.length) resultObj = { ...resultObj, links: result.links };
 
   return resultObj;
+}
+
+// TODO: Find a better way to filter for attachment extensions in the future
+// TODO: without defining a static file extension list.
+export function isLinkAFile(link: string): boolean {
+  const url = new URL(link);
+  const linkExtension = url.pathname.split("/").at(-1);
+
+  return !!linkExtension?.includes(".") && !linkExtension.includes(".html");
 }
