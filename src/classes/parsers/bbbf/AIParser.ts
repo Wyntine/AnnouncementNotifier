@@ -53,10 +53,7 @@ export class AIParser extends Parser {
             links: [
               {
                 selector: "a",
-                value: (el) => {
-                  const link = $(el).attr("href");
-                  return link && this.addBaseSite(link);
-                },
+                value: (el) => this.addBaseSiteUnsafe($(el).attr("href")),
               },
             ],
           },

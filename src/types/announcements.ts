@@ -18,4 +18,8 @@ export interface ParsedAnnouncement {
    * Attachments such as image, PDF, and text files
    */
   files?: string[];
+  /**
+   * URL of the specific announcement if exists.
+   */
+  url?: string;
 }
