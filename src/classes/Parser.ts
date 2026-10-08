@@ -15,6 +15,7 @@ export class Parser {
   public name: string;
   public baseSite: string;
   public sites: string | SubParsers;
+  public urlsAsFile: string[] = [];
 
   /**
    * @param name The parser's base name
@@ -22,10 +23,19 @@ export class Parser {
    * @param sites Relative paths of (starting with `/`) sites that will be parsed.
    *  Can be mapped to assign sub-parsers to specific sites.
    */
-  constructor(name: string, baseSite: string, sites?: string | SubParsers) {
+  constructor(
+    name: string,
+    baseSite: string,
+    sites: string | SubParsers,
+    urlsAsFile?: string[],
+  ) {
     this.name = name;
     this.baseSite = baseSite;
-    this.sites = sites ?? baseSite;
+    this.sites = sites;
+
+    if (urlsAsFile) {
+      this.urlsAsFile = urlsAsFile;
+    }
   }
 
   public parse(
@@ -67,7 +77,8 @@ export class Parser {
 
         const isFile =
           isLinkAFile(link) ||
-          (!link.includes("hacettepe.edu.tr") && !link.startsWith("/"));
+          (!link.includes("hacettepe.edu.tr") && !link.startsWith("/")) ||
+          this.urlsAsFile.includes(link);
 
         if (!isFile && isUnreachable(link)) {
           // TODO: Error log
@@ -76,6 +87,7 @@ export class Parser {
 
         const links = parseLinkByType(
           isFile ? [link] : await this.parseSubSite(link),
+          this.urlsAsFile,
         );
 
         announcements.push({
