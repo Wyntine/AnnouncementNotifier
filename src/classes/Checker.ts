@@ -5,6 +5,7 @@ import { AIParser } from "./parsers/bbbf/AIParser.ts";
 import { BBBFParser } from "./parsers/bbbf/BBBFParser.ts";
 import { CSParser } from "./parsers/bbbf/CSParser.ts";
 import { DentistryParser } from "./parsers/DentistryParser.ts";
+import { LiteratureParser } from "./parsers/literature/LiteratureParser.ts";
 import { PharmacyParser } from "./parsers/PharmacyParser.ts";
 import { YDYOParser } from "./parsers/YDYOParser.ts";
 import { YamlDatabase } from "./YamlDatabase.ts";
@@ -17,6 +18,7 @@ export class Checker {
     new YDYOParser(),
     new DentistryParser(),
     new PharmacyParser(),
+    new LiteratureParser(),
   ];
   private database = new YamlDatabase();
 

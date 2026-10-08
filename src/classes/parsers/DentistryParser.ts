@@ -9,6 +9,7 @@ export class DentistryParser extends Parser {
         general: "/tr/duyurular/genel_duyurular-2",
         student: "/tr/duyurular/ogrenci_duyurulari-3",
       },
+      // TODO: Maybe add "same site" check for external announcement links
       ["https://universitem.hacettepe.edu.tr/katalog-tr/"],
     );
   }
