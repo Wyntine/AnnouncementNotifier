@@ -72,6 +72,7 @@ export class Parser {
       for (const { link, date, title } of result.announcements) {
         if (!title || !date || !link) {
           // TODO: Log error message
+          console.log("[Parser] Missing announcement data.");
           continue;
         }
 
@@ -82,6 +83,7 @@ export class Parser {
 
         if (!isFile && isUnreachable(link)) {
           // TODO: Error log
+          console.log(`[Parser] Unreachable link detected: ${link}`);
           continue;
         }
 
@@ -107,6 +109,7 @@ export class Parser {
 
     if (!isRequestOk(response.statusCode)) {
       // TODO: Log error message
+      console.log("[Parser] Request failed");
       return [];
     }
 

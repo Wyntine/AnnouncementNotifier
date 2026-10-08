@@ -55,6 +55,7 @@ export class Checker {
 
     if (!isRequestOk(request.statusCode)) {
       // TODO: Error log
+      console.log("[Checker] Request failed");
       return [];
     }
 
