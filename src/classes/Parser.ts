@@ -40,7 +40,7 @@ export class Parser {
           value: {
             link: {
               selector: "a",
-              value: (el) => this.addBaseSiteUnsafe($(el).attr("href")),
+              value: (el) => this.addBaseSite($(el).attr("href")),
             },
             date: {
               selector: "span",
@@ -104,7 +104,7 @@ export class Parser {
       links: [
         {
           selector: "a",
-          value: (el) => this.addBaseSiteUnsafe($(el).attr("href")),
+          value: (el) => this.addBaseSite($(el).attr("href")),
         },
       ],
     }).links;
@@ -114,18 +114,14 @@ export class Parser {
    * Changes the link to ensure that the link starts with "https://"
    * and if it's a relative path, adds the base site URL.
    */
-  public addBaseSite(link: string) {
+  public addBaseSite<Link extends string | undefined>(link: Link): Link {
+    if (!link) return undefined as Link;
+
     return (
       link.startsWith("http") ? link
       : link.startsWith("/") ? `https://${this.baseSite}${link}`
       : link.split("/").at(0)?.includes(".") ? `https://${link}`
-      : `https://${this.baseSite}/${link}`
-    );
-  }
-
-  public addBaseSiteUnsafe(link: string | undefined): string | undefined {
-    if (!link) return;
-    return this.addBaseSite(link);
+      : `https://${this.baseSite}/${link}`) as Link;
   }
 }
 
