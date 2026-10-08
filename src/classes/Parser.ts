@@ -40,7 +40,7 @@ export class Parser {
           value: {
             link: {
               selector: "a",
-              value: (el) => this.addBaseSite($(el).attr("href") ?? ""),
+              value: (el) => this.addBaseSiteUnsafe($(el).attr("href")),
             },
             date: {
               selector: "span",
@@ -59,8 +59,8 @@ export class Parser {
     return (async (): Promise<ParsedAnnouncement[]> => {
       const announcements = [];
 
-      for (const { link = "", date, title } of result.announcements) {
-        if (!title || !date) {
+      for (const { link, date, title } of result.announcements) {
+        if (!title || !date || !link) {
           // TODO: Log error message
           continue;
         }
@@ -82,6 +82,7 @@ export class Parser {
           title,
           date,
           ...links,
+          ...(isFile ? {} : { url: link }),
         });
       }
 
@@ -103,7 +104,7 @@ export class Parser {
       links: [
         {
           selector: "a",
-          value: (el) => this.addBaseSite($(el).attr("href") ?? ""),
+          value: (el) => this.addBaseSiteUnsafe($(el).attr("href")),
         },
       ],
     }).links;
@@ -120,6 +121,11 @@ export class Parser {
       : link.split("/").at(0)?.includes(".") ? `https://${link}`
       : `https://${this.baseSite}/${link}`
     );
+  }
+
+  public addBaseSiteUnsafe(link: string | undefined): string | undefined {
+    if (!link) return;
+    return this.addBaseSite(link);
   }
 }
 
