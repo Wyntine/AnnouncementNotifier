@@ -15,6 +15,7 @@ import { EnglishLinguisticsParser } from "./parsers/literature/EnglishLinguistic
 import { TIParser } from "./parsers/literature/TIParser.ts";
 import { PsychologyParser } from "./parsers/literature/PsychologyParser.ts";
 import { HistoryParser } from "./parsers/literature/HistoryParser.ts";
+import { TurkishLiteratureParser } from "./parsers/literature/TurkishLiteratureParser.ts";
 import { LiteratureParser } from "./parsers/literature/LiteratureParser.ts";
 import { PharmacyParser } from "./parsers/PharmacyParser.ts";
 import { YDYOParser } from "./parsers/YDYOParser.ts";
@@ -39,6 +40,7 @@ export class Checker {
     new TIParser(),
     new PsychologyParser(),
     new HistoryParser(),
+    new TurkishLiteratureParser(),
   ];
   private database = new YamlDatabase();
 
@@ -83,6 +85,7 @@ export class Checker {
       return [];
     }
 
+    // TODO: Only parse external sites if the origin site is the same.
     // TODO: Limit announcement count per sub parser.
     const siteData = await request.body.text();
     return (await parser.parse(siteData)).map((announcement) => ({
