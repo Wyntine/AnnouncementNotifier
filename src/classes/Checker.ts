@@ -6,6 +6,7 @@ import { BBBFParser } from "./parsers/bbbf/BBBFParser.ts";
 import { CSParser } from "./parsers/bbbf/CSParser.ts";
 import { DentistryParser } from "./parsers/DentistryParser.ts";
 import { GermanLiteratureParser } from "./parsers/literature/GermanLiteratureParser.ts";
+import { AmericanLiteratureParser } from "./parsers/literature/AmericanLiteratureParser.ts";
 import { LiteratureParser } from "./parsers/literature/LiteratureParser.ts";
 import { PharmacyParser } from "./parsers/PharmacyParser.ts";
 import { YDYOParser } from "./parsers/YDYOParser.ts";
@@ -21,6 +22,7 @@ export class Checker {
     new PharmacyParser(),
     new LiteratureParser(),
     new GermanLiteratureParser(),
+    new AmericanLiteratureParser(),
   ];
   private database = new YamlDatabase();
 
@@ -65,6 +67,7 @@ export class Checker {
       return [];
     }
 
+    // TODO: Limit announcement count per sub parser.
     const siteData = await request.body.text();
     return (await parser.parse(siteData)).map((announcement) => ({
       ...announcement,
