@@ -76,19 +76,19 @@ export class Parser {
           continue;
         }
 
-        const isFile =
-          isLinkAFile(link) ||
-          (!link.includes("hacettepe.edu.tr") && !link.startsWith("/")) ||
-          this.urlsAsFile.includes(link);
+        const isFile = isLinkAFile(link) || this.urlsAsFile.includes(link);
 
-        if (!isFile && isUnreachable(link)) {
+        const isParseable =
+          link.startsWith(`https://${this.baseSite}`) && !isFile;
+
+        if (isUnreachable(link)) {
           // TODO: Error log
           console.log(`[Parser] Unreachable link detected: ${link}`);
           continue;
         }
 
         const links = parseLinkByType(
-          isFile ? [link] : await this.parseSubSite(link),
+          !isParseable ? [link] : await this.parseSubSite(link),
           this.urlsAsFile,
         );
 
@@ -96,7 +96,7 @@ export class Parser {
           title,
           date,
           ...links,
-          ...(isFile ? {} : { url: link }),
+          ...(!isParseable ? {} : { url: link }),
         });
       }
 

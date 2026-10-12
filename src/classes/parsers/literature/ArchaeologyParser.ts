@@ -2,8 +2,6 @@ import { Parser } from "../../Parser.ts";
 
 export class ArchaeologyParser extends Parser {
   constructor() {
-    super("lit-archaeo", "arkeo.hacettepe.edu.tr", "/tr/duyurular", [
-      "https://uni101.hacettepe.edu.tr/",
-    ]);
+    super("lit-archaeo", "arkeo.hacettepe.edu.tr", "/tr/duyurular");
   }
 }
