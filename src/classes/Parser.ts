@@ -11,6 +11,8 @@ import {
   isUnreachable,
 } from "../utils/network.ts";
 
+const unrelativeSiteRegex = /^\/{2,}.+/;
+
 export class Parser {
   public name: string;
   public baseSite: string;
@@ -134,7 +136,10 @@ export class Parser {
 
     return (
       link.startsWith("http") ? link
-      : link.startsWith("/") ? `https://${this.baseSite}${link}`
+      : link.startsWith("/") ?
+        unrelativeSiteRegex.test(link) ?
+          `https://${link.replace(/^\/+/, "")}`
+        : `https://${this.baseSite}${link}`
       : link.split("/").at(0)?.includes(".") ? `https://${link}`
       : `https://${this.baseSite}/${link}`) as Link;
   }

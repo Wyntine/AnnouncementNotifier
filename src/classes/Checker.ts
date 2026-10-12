@@ -21,6 +21,12 @@ import { LiteratureParser } from "./parsers/literature/LiteratureParser.ts";
 import { PharmacyParser } from "./parsers/PharmacyParser.ts";
 import { YDYOParser } from "./parsers/YDYOParser.ts";
 import { EducationParser } from "./parsers/education/EducationParser.ts";
+import { EducationalSciencesParser } from "./parsers/education/sciences/EducationalSciencesParser.ts";
+import { MEParser } from "./parsers/education/sciences/MEParser.ts";
+import { CIParser } from "./parsers/education/sciences/CIParser.ts"
+import { LLLParser } from "./parsers/education/sciences/LLLParser.ts"
+import { EAParser } from "./parsers/education/sciences/EAParser.ts"
+import { PCParser } from "./parsers/education/sciences/PCParser.ts"
 import { YamlDatabase } from "./YamlDatabase.ts";
 
 export class Checker {
@@ -45,6 +51,12 @@ export class Checker {
     new TurkishLiteratureParser(),
     new TurkishFolkloreParser(),
     new EducationParser(),
+    new EducationalSciencesParser(),
+    new MEParser(),
+    new CIParser(),
+    new LLLParser(),
+    new EAParser(),
+    new PCParser(),
   ];
   private database = new YamlDatabase();
 
