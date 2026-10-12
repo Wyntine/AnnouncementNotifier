@@ -38,7 +38,7 @@
     - [x] [_Student_](https://ctl.hacettepe.edu.tr/tr/duyurular/ogrenci_duyurulari-1)
     - [x] [_News_](https://ctl.hacettepe.edu.tr/tr/duyurular/haberler-3)
     - [x] [_General_](https://ctl.hacettepe.edu.tr/tr/duyurular/duyurular-4)
-  - [ ] [**Philosophy**](https://felsefe.hacettepe.edu.tr/tr/duyurular)
+  - [x] [**Philosophy**](https://felsefe.hacettepe.edu.tr/tr/duyurular)
   - [ ] [**French Literature**](https://hafde.hacettepe.edu.tr/)
   - [ ] [**English Linguistics**](https://idb.hacettepe.edu.tr/tr/duyurular)
   - [ ] [**English Literature**](https://ide.hacettepe.edu.tr/)
