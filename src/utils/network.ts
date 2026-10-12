@@ -1,6 +1,6 @@
 import { Agent } from "undici";
 
-export const unreachableSites = ["etkinlikler.hacettepe.edu.tr"];
+export const unreachableSites: string[] = [/*"etkinlikler.hacettepe.edu.tr"*/];
 
 export async function fetchSchoolSitesWithTLSOff(url: string) {
   const urlData = new URL(url);
