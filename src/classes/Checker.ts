@@ -23,40 +23,56 @@ import { YDYOParser } from "./parsers/YDYOParser.ts";
 import { EducationParser } from "./parsers/education/EducationParser.ts";
 import { EducationalSciencesParser } from "./parsers/education/sciences/EducationalSciencesParser.ts";
 import { MEParser } from "./parsers/education/sciences/MEParser.ts";
-import { CIParser } from "./parsers/education/sciences/CIParser.ts"
-import { LLLParser } from "./parsers/education/sciences/LLLParser.ts"
-import { EAParser } from "./parsers/education/sciences/EAParser.ts"
-import { PCParser } from "./parsers/education/sciences/PCParser.ts"
+import { CIParser } from "./parsers/education/sciences/CIParser.ts";
+import { LLLParser } from "./parsers/education/sciences/LLLParser.ts";
+import { EAParser } from "./parsers/education/sciences/EAParser.ts";
+import { PCParser } from "./parsers/education/sciences/PCParser.ts";
+import { MathSciEducationParser } from "./parsers/education/mse/MathSciEducationParser.ts";
+import { BiologyEducationParser } from "./parsers/education/mse/BiologyEducationParser.ts";
+import { SciTeachingParser } from "./parsers/education/mse/SciTeachingParser.ts";
+import { PhysEducationParser } from "./parsers/education/mse/PhysEducationParser.ts";
+import { ChemEducationParser } from "./parsers/education/mse/ChemEducationParser.ts";
+import { MathEducationParser } from "./parsers/education/mse/mathedu/MathEducationParser.ts";
+import { MathTeachingParser } from "./parsers/education/mse/mathedu/MathTeachingParser.ts";
+import { ElemMathTeachParser } from "./parsers/education/mse/mathedu/ElemMathTeachParser.ts";
 import { YamlDatabase } from "./YamlDatabase.ts";
 
 export class Checker {
   private parsers: Parser[] = [
-    new BBBFParser(),
-    new CSParser(),
-    new AIParser(),
-    new YDYOParser(),
-    new DentistryParser(),
-    new PharmacyParser(),
-    new LiteratureParser(),
-    new GermanLiteratureParser(),
-    new AmericanLiteratureParser(),
-    new AnthropologyParser(),
-    new ArchaeologyParser(),
-    new TurkishDialetcsParser(),
-    new PhilosophyParser(),
-    new EnglishLinguisticsParser(),
-    new TIParser(),
-    new PsychologyParser(),
-    new HistoryParser(),
-    new TurkishLiteratureParser(),
-    new TurkishFolkloreParser(),
-    new EducationParser(),
-    new EducationalSciencesParser(),
-    new MEParser(),
-    new CIParser(),
-    new LLLParser(),
-    new EAParser(),
-    new PCParser(),
+    // new BBBFParser(),
+    // new CSParser(),
+    // new AIParser(),
+    // new YDYOParser(),
+    // new DentistryParser(),
+    // new PharmacyParser(),
+    // new LiteratureParser(),
+    // new GermanLiteratureParser(),
+    // new AmericanLiteratureParser(),
+    // new AnthropologyParser(),
+    // new ArchaeologyParser(),
+    // new TurkishDialetcsParser(),
+    // new PhilosophyParser(),
+    // new EnglishLinguisticsParser(),
+    // new TIParser(),
+    // new PsychologyParser(),
+    // new HistoryParser(),
+    // new TurkishLiteratureParser(),
+    // new TurkishFolkloreParser(),
+    // new EducationParser(),
+    // new EducationalSciencesParser(),
+    // new MEParser(),
+    // new CIParser(),
+    // new LLLParser(),
+    // new EAParser(),
+    // new PCParser(),
+    // new MathSciEducationParser(),
+    // new BiologyEducationParser(),
+    // new SciTeachingParser(),
+    // new PhysEducationParser(),
+    // new ChemEducationParser(),
+    // new MathEducationParser(),
+    // new MathTeachingParser(),
+    new ElemMathTeachParser(),
   ];
   private database = new YamlDatabase();
 

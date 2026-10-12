@@ -45,36 +45,37 @@ export class Parser {
   ): ParsedAnnouncement[] | Promise<ParsedAnnouncement[]> {
     const $ = load(siteData);
 
-    const result = $("tbody > tr").extract({
-      announcements: [
-        {
-          selector: "td",
-          value: {
-            link: {
-              selector: "a",
-              value: (el) => this.addBaseSite($(el).attr("href")),
-            },
-            date: {
-              selector: "span",
-              value: (el) => new Date($(el).text()).valueOf(),
-            },
-            title: {
-              selector: "a",
-              value: (el) => normalizeUnevenHTML($(el).text()),
-            },
-          },
-        },
-      ],
-    });
+    const result = $("tbody > tr")
+      .map((_, row) => {
+        const td = $(row).find("td").first();
+        const anchor = td
+          .find("a")
+          .filter(
+            (_, el) => $(el).text().trim().replaceAll(/\S/g, "").length > 0,
+          )
+          .first();
+        // TODO: May remove .tarih if some sites don't have it.
+        const date = td.find("span.tarih").first().text();
+
+        return {
+          link: this.addBaseSite(anchor.attr("href")?.trim()),
+          date: new Date(date).valueOf(),
+          title: normalizeUnevenHTML(anchor.text().trim()),
+        };
+      })
+      .get();
 
     // TODO: Find a non-chaotic way to fix that. May require a bigger refactor.
     return (async (): Promise<ParsedAnnouncement[]> => {
       const announcements = [];
 
-      for (const { link, date, title } of result.announcements) {
-        if (!title || !date || !link) {
+      for (const { link, date, title } of result) {
+        if (!title || !Number.isFinite(date) || !link) {
           // TODO: Log error message
           console.log("[Parser] Missing announcement data.");
+          console.log(`- title: ${title}`);
+          console.log(`- date: ${date.toString()}`);
+          console.log(`- link: ${link ?? ""}`);
           continue;
         }
 
@@ -140,6 +141,7 @@ export class Parser {
         unrelativeSiteRegex.test(link) ?
           `https://${link.replace(/^\/+/, "")}`
         : `https://${this.baseSite}${link}`
+      : link.startsWith("mailto:") ? link
       : link.split("/").at(0)?.includes(".") ? `https://${link}`
       : `https://${this.baseSite}/${link}`) as Link;
   }
