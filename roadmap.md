@@ -60,7 +60,7 @@
     - [x] [_General_](https://history.hacettepe.edu.tr/tr/duyurular/duyurular-1)
     - [x] [_News_](https://history.hacettepe.edu.tr/tr/duyurular/haberler-3)
     - [x] [_Events_](https://history.hacettepe.edu.tr/tr/duyurular/etkinlikler-5)
-  - [ ] [**Turkish Literature**](https://turkoloji.hacettepe.edu.tr/tr/duyurular)
+  - [x] [**Turkish Literature**](https://turkoloji.hacettepe.edu.tr/tr/duyurular)
   - [ ] [**Turkish Folklore**](https://halkbilimi.hacettepe.edu.tr)
     - [ ] [_General_](https://halkbilimi.hacettepe.edu.tr/tr/duyurular/duyurular-4)
     - [ ] [_Student_](https://halkbilimi.hacettepe.edu.tr/tr/duyurular/ogrenci-5)
