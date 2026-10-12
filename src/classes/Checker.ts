@@ -84,13 +84,16 @@ export class Checker {
     );
 
     if (!isRequestOk(request.statusCode)) {
-      // TODO: Error log
+      // TODO: Log error message
       console.log("[Checker] Request failed");
       return [];
     }
 
-    // TODO: Only parse external sites if the origin site is the same.
-    // TODO: Limit announcement count per sub parser.
+    // TODO: Do initial check (announcement downloading) with all announcements but
+    // TODO: on other checks, filter the last 1 week.
+    //
+    // TODO: I can use a secondary database to check if initialization is complete for
+    // TODO: each parser.
     const siteData = await request.body.text();
     return (await parser.parse(siteData)).map((announcement) => ({
       ...announcement,
