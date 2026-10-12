@@ -8,9 +8,10 @@
     "start": "tsx src/index.ts",
     "build": "tsdown",
     "prepack": "run-s lint build",
-    "lint": "run-s typeCheck eslint",
+    "lint": "run-s typeCheck eslint format",
     "eslint": "eslint --fix ./src",
-    "typeCheck": "tsc --noEmit"
+    "typeCheck": "tsc --noEmit",
+    "format": "prettier -w ."
   },
   "keywords": [
     "announcement",
