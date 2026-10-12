@@ -39,6 +39,10 @@ import { SpecialEducationParser } from "./parsers/education/special/SpecialEduca
 import { GiftedEducationParser } from "./parsers/education/special/GiftedEducationParser.ts";
 import { ESIDParser } from "./parsers/education/special/ESIDParser.ts";
 import { ASDEducationParser } from "./parsers/education/special/ASDEducationParser.ts";
+import { TSSEducationParser } from "./parsers/education/TSSEducationParser.ts";
+import { PrimaryEducationParser } from "./parsers/education/primary/PrimaryEducationParser.ts";
+import { PreschoolEducationParser } from "./parsers/education/primary/PreschoolEducationParser.ts";
+import { ClassroomEducationParser } from "./parsers/education/primary/ClassroomEducationParser.ts";
 import { YamlDatabase } from "./YamlDatabase.ts";
 
 export class Checker {
@@ -81,6 +85,10 @@ export class Checker {
     new GiftedEducationParser(),
     new ESIDParser(),
     new ASDEducationParser(),
+    new TSSEducationParser(),
+    new PrimaryEducationParser(),
+    new PreschoolEducationParser(),
+    new ClassroomEducationParser(),
   ];
   private database = new YamlDatabase();
 
