@@ -20,6 +20,7 @@ import { TurkishFolkloreParser } from "./parsers/literature/TurkishFolkloreParse
 import { LiteratureParser } from "./parsers/literature/LiteratureParser.ts";
 import { PharmacyParser } from "./parsers/PharmacyParser.ts";
 import { YDYOParser } from "./parsers/YDYOParser.ts";
+import { EducationParser } from "./parsers/education/EducationParser.ts";
 import { YamlDatabase } from "./YamlDatabase.ts";
 
 export class Checker {
@@ -43,6 +44,7 @@ export class Checker {
     new HistoryParser(),
     new TurkishLiteratureParser(),
     new TurkishFolkloreParser(),
+    new EducationParser(),
   ];
   private database = new YamlDatabase();
 
