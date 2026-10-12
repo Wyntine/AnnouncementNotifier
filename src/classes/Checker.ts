@@ -9,6 +9,7 @@ import { GermanLiteratureParser } from "./parsers/literature/GermanLiteraturePar
 import { AmericanLiteratureParser } from "./parsers/literature/AmericanLiteratureParser.ts";
 import { AnthropologyParser } from "./parsers/literature/AnthropologyParser.ts";
 import { ArchaeologyParser } from "./parsers/literature/ArchaeologyParser.ts";
+import { TurkishDialetcsParser } from "./parsers/literature/TurkishDialetcsParser.ts";
 import { LiteratureParser } from "./parsers/literature/LiteratureParser.ts";
 import { PharmacyParser } from "./parsers/PharmacyParser.ts";
 import { YDYOParser } from "./parsers/YDYOParser.ts";
@@ -27,6 +28,7 @@ export class Checker {
     new AmericanLiteratureParser(),
     new AnthropologyParser(),
     new ArchaeologyParser(),
+    new TurkishDialetcsParser(),
   ];
   private database = new YamlDatabase();
 
