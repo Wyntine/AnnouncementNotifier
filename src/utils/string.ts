@@ -1,5 +1,7 @@
 import type { LinkParseResult } from "../types/utils.ts";
 
+const excludedFileExtensions = [".html", ".php"];
+
 /**
  * Trims and splits the text using "\n\n" as delimeter.
  */
@@ -55,5 +57,10 @@ export function isLinkAFile(link: string): boolean {
   const url = new URL(link);
   const linkExtension = url.pathname.split("/").at(-1);
 
-  return !!linkExtension?.includes(".") && !linkExtension.includes(".html");
+  return (
+    !!linkExtension?.includes(".") &&
+    !excludedFileExtensions.find((file) => linkExtension.includes(file)) &&
+    !link.startsWith("mailto:")
+  );
+  // !linkExtension.includes(".html");
 }
