@@ -32,7 +32,7 @@
     - [ ] [_Archive_](https://ake.hacettepe.edu.tr/tr/duyurular/eski_duyurular-15)
     - [x] [_General_](https://ake.hacettepe.edu.tr/tr/duyurular/genel_duyurular-16)
   - [x] [**Anthropology**](https://antropoloji.hacettepe.edu.tr/tr/duyurular)
-  - [ ] [**Archaeology**](https://arkeo.hacettepe.edu.tr/tr/duyurular)
+  - [x] [**Archaeology**](https://arkeo.hacettepe.edu.tr/tr/duyurular)
   - [ ] [**Information Management**](https://bby.hacettepe.edu.tr/duyurular.php)
   - [ ] [**Turkish Dialects**](https://ctl.hacettepe.edu.tr/)
     - [ ] [_Student_](https://ctl.hacettepe.edu.tr/tr/duyurular/ogrenci_duyurulari-1)
