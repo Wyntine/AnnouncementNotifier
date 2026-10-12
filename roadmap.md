@@ -40,7 +40,7 @@
     - [x] [_General_](https://ctl.hacettepe.edu.tr/tr/duyurular/duyurular-4)
   - [x] [**Philosophy**](https://felsefe.hacettepe.edu.tr/tr/duyurular)
   - [ ] [**French Literature**](https://hafde.hacettepe.edu.tr/)
-  - [ ] [**English Linguistics**](https://idb.hacettepe.edu.tr/tr/duyurular)
+  - [x] [**English Linguistics**](https://idb.hacettepe.edu.tr/tr/duyurular)
   - [ ] [**English Literature**](https://ide.hacettepe.edu.tr/)
   - [ ] [**Translation and Interpreting**](https://mtb.hacettepe.edu.tr/)
     - [ ] [_General_](https://mtb.hacettepe.edu.tr/tr/duyurular/duyurular-1)
