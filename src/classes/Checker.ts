@@ -16,6 +16,7 @@ import { TIParser } from "./parsers/literature/TIParser.ts";
 import { PsychologyParser } from "./parsers/literature/PsychologyParser.ts";
 import { HistoryParser } from "./parsers/literature/HistoryParser.ts";
 import { TurkishLiteratureParser } from "./parsers/literature/TurkishLiteratureParser.ts";
+import { TurkishFolkloreParser } from "./parsers/literature/TurkishFolkloreParser.ts";
 import { LiteratureParser } from "./parsers/literature/LiteratureParser.ts";
 import { PharmacyParser } from "./parsers/PharmacyParser.ts";
 import { YDYOParser } from "./parsers/YDYOParser.ts";
@@ -41,6 +42,7 @@ export class Checker {
     new PsychologyParser(),
     new HistoryParser(),
     new TurkishLiteratureParser(),
+    new TurkishFolkloreParser(),
   ];
   private database = new YamlDatabase();
 
