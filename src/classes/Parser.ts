@@ -4,6 +4,7 @@ import {
   isLinkAFile,
   normalizeUnevenHTML,
   parseLinkByType,
+  linkHasException,
 } from "../utils/string.ts";
 import {
   fetchSchoolSitesWithTLSOff,
@@ -141,7 +142,7 @@ export class Parser {
         unrelativeSiteRegex.test(link) ?
           `https://${link.replace(/^\/+/, "")}`
         : `https://${this.baseSite}${link}`
-      : link.startsWith("mailto:") ? link
+      : linkHasException(link) ? link
       : link.split("/").at(0)?.includes(".") ? `https://${link}`
       : `https://${this.baseSite}/${link}`) as Link;
   }

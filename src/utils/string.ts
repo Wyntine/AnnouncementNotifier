@@ -60,7 +60,10 @@ export function isLinkAFile(link: string): boolean {
   return (
     !!linkExtension?.includes(".") &&
     !excludedFileExtensions.find((file) => linkExtension.includes(file)) &&
-    !link.startsWith("mailto:")
+    !linkHasException(link)
   );
-  // !linkExtension.includes(".html");
+}
+
+export function linkHasException(link: string): boolean {
+  return link.startsWith("mailto:") || link.includes("@gmail.com");
 }
