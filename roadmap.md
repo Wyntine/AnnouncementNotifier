@@ -137,7 +137,8 @@
       - [x] [_Postgraduate_](https://elt.hacettepe.edu.tr/tr/duyurular/lisansustu_duyurular-5)
       - [x] [_General_](https://elt.hacettepe.edu.tr/tr/duyurular/anabilim_dali_duyurulari-6)
 - [ ] [**Science**](https://fenfakultesi.hacettepe.edu.tr/duyurular)
-Has a Supabase API for fetching announcements.
+  - Has a Supabase API for fetching announcements.
+  - TODO: add an .env system
   - [ ] [**Actuarial Science**](https://www.aktuerya.hacettepe.edu.tr)
   - [ ] [**Statistics**](https://stat.hacettepe.edu.tr/tr/duyurular/duyurular-1)
   - [ ] [**Chemistry**](https://chem.hacettepe.edu.tr)
@@ -162,3 +163,130 @@ Has a Supabase API for fetching announcements.
   - [ ] [**Painting**](https://resim.hacettepe.edu.tr)
     - [ ] [_General_](https://resim.hacettepe.edu.tr/tr/duyurular/duyurular-1)
     - [ ] [_Events_](https://resim.hacettepe.edu.tr/tr/duyurular/etkinlik_haberleri-4)
+  - [ ] [**Ceramics**](https://seramikvecam.hacettepe.edu.tr/tr/duyurular/duyurular-1)
+- [ ] [**Nursing**](https://hemsirelik.hacettepe.edu.tr) may have more branches
+  - [ ] [_General_](https://hemsirelik.hacettepe.edu.tr/tr/duyurular/duyurular-2)
+  - [ ] [_News_](https://hemsirelik.hacettepe.edu.tr/tr/duyurular/haberler-15)
+  - [ ] [_Events_](https://hemsirelik.hacettepe.edu.tr/tr/duyurular/etkinlikler-17)
+- [ ] [**Law**](https://hukukfakultesi.hacettepe.edu.tr)
+  - [ ] [_Undergraduate_](https://hukukfakultesi.hacettepe.edu.tr/tr/duyurular/lisans_duyurulari-4)
+  - [ ] [_Postgraduate_](https://hukukfakultesi.hacettepe.edu.tr/tr/duyurular/yuksek_lisans_ve_doktora_duyur-1)
+  - [ ] [_Other_](https://hukukfakultesi.hacettepe.edu.tr/tr/duyurular/diger_duyurular-5)
+- [ ] [**Administrative Sciences**](https://iibf.hacettepe.edu.tr)
+  - [ ] [_Student_](https://iibf.hacettepe.edu.tr/tr/duyurular/ogrenci_duyurulari-5)
+  - [ ] [_Staff_](https://iibf.hacettepe.edu.tr/tr/duyurular/personel_duyurulari-7)
+  - [ ] [**Consumer Sciences**](https://atb.hacettepe.edu.tr)
+    - [ ] [_General_](https://atb.hacettepe.edu.tr/tr/duyurular/genel-17)
+    - [ ] [_Undergraduate_](https://atb.hacettepe.edu.tr/tr/duyurular/lisans_dersleri_ve_sinavlari-12)
+    - [ ] [_Postgraduate_](https://atb.hacettepe.edu.tr/tr/duyurular/lisansustu-16)
+    - [ ] [_Internship_](https://atb.hacettepe.edu.tr/tr/duyurular/staj-14)
+  - [ ] [**Economics**](https://econ.hacettepe.edu.tr)
+    - [ ] [_Undergraduate_](https://econ.hacettepe.edu.tr/tr/duyurular/lisans_ogrencileri-12)
+    - [ ] [_Postgraduate_](https://econ.hacettepe.edu.tr/tr/duyurular/lisansustu_ogrencileri-13)
+    - [ ] [_Other_](https://econ.hacettepe.edu.tr/tr/duyurular/diger-11)
+  - [ ] [**Business Administration**](https://isletme.hacettepe.edu.tr/tr/menu/duyurular-228)
+    - Look at this, may contain an API
+  - [ ] [**Public Finance**](https://maliye.hacettepe.edu.tr)
+    - [ ] [_General_](https://maliye.hacettepe.edu.tr/tr/duyurular/duyurular-1)
+    - [ ] [_Archive_](https://maliye.hacettepe.edu.tr/tr/duyurular/20192020_donemi_ve_oncesi-6)
+  - [ ] [**Health Management**](https://sid.hacettepe.edu.tr/tr/duyurular/guncel_duyurular-2)
+  - [ ] [**Political Science**](https://sbky.hacettepe.edu.tr)
+    - [ ] [_Undergraduate_](https://sbky.hacettepe.edu.tr/tr/duyurular/lisans-2)
+    - [ ] [_Postgraduate_](https://sbky.hacettepe.edu.tr/tr/duyurular/lisansustu-7)
+    - [ ] [_Exams_](https://sbky.hacettepe.edu.tr/tr/duyurular/sinavtelafi-20)
+    - [ ] [_Exchange_](https://sbky.hacettepe.edu.tr/tr/duyurular/degisim-14)
+    - [ ] [_Internship_](https://sbky.hacettepe.edu.tr/tr/duyurular/bursstaj-15)
+    - [ ] [_Events_](https://sbky.hacettepe.edu.tr/tr/duyurular/etkinlik-18)
+    - [ ] [_From Department_](https://sbky.hacettepe.edu.tr/tr/duyurular/bolumden-19)
+    - [ ] [_Archive_](https://sbky.hacettepe.edu.tr/tr/duyurular/arsiv-17)
+  - [ ] [**Social Work**](https://shy.hacettepe.edu.tr)
+    - [ ] [_General_](https://shy.hacettepe.edu.tr/tr/duyurular/genel_duyuru-8)
+    - [ ] [_Undergraduate_](https://shy.hacettepe.edu.tr/tr/duyurular/lisans_duyuru-9)
+    - [ ] [_Postgraduate_](https://shy.hacettepe.edu.tr/tr/duyurular/lisansustu_duyuru-10)
+  - [ ] [**International Relations**](https://ir.hacettepe.edu.tr)
+    - [ ] [_General_](https://ir.hacettepe.edu.tr/tr/duyurular/genel_duyurular-5)
+    - [ ] [_Undergraduate_](https://ir.hacettepe.edu.tr/tr/duyurular/lisans_duyurulari-6)
+    - [ ] [_Postgraduate_](https://ir.hacettepe.edu.tr/tr/duyurular/lisansustu_duyurulari-7)
+- [ ] [**Communication**](https://iletisim.hacettepe.edu.tr)
+  - Uses PHP, stores announcements in `/pdata/index.php?page_id=xxx`
+  - Also has English announcements but on different pages
+  - `page_id=148` has current ones, `page_id=149` has archived ones
+- [ ] [**Architecture Faculty**](https://mimarlikfakultesi.hacettepe.edu.tr)
+  - May have same announcements as architecture department but I'll add this faculty to prevent missed announcements.
+  - Has fully implemented English site
+  - [ ] [_Events_](https://mimarlikfakultesi.hacettepe.edu.tr/tr/duyurular/mesleki_destekli_etkinlik-7)
+  - [ ] [_Staff_](https://mimarlikfakultesi.hacettepe.edu.tr/tr/duyurular/personel_duyurulari-10)
+  - [ ] [_Competition_](https://mimarlikfakultesi.hacettepe.edu.tr/tr/duyurular/kutlama_ve_taziye_duyurulari-23)
+  - [ ] [_Celebration_](https://mimarlikfakultesi.hacettepe.edu.tr/tr/duyurular/yarisma-25)
+  - [ ] [_Student_](https://mimarlikfakultesi.hacettepe.edu.tr/tr/duyurular/ogrenci_duyurulari_burslar-32)
+  - [ ] [**Architecture**](https://architecture.hacettepe.edu.tr/tr/duyurular/duyurular-1)
+- [ ] [**Engineering**](https://muhfak.hacettepe.edu.tr)
+  - TODO: Look at this. Generic parser may be broken on this site.
+  - [ ] [_Student_](https://muhfak.hacettepe.edu.tr/tr/duyurular/ogrenci_duyurulari-11)
+  - [ ] [_Staff_](https://muhfak.hacettepe.edu.tr/tr/duyurular/personel_duyurulari-21)
+  - [ ] [_Events_](https://muhfak.hacettepe.edu.tr/tr/duyurular/haberler-25)
+  - [ ] [_Archive_](https://muhfak.hacettepe.edu.tr/tr/duyurular/eski_duyurular-23)
+  - [ ] [**Environmental Engineering**](https://cevre.hacettepe.edu.tr/tr/duyurular/duyurular-10)
+  - [ ] [**Electrical and Electronics Engineering**](https://ee.hacettepe.edu.tr/?lang=t)
+    - Current announcements are on the main page
+    - [ ] [_Archive_](https://www.ee.hacettepe.edu.tr/?lang=t&link=archivedAnno)
+  - [ ] [**Industrial Engineering**](https://ie.hacettepe.edu.tr/index.php?lang=tr)
+    - TODO: Has fully implemented English site
+    - All announcements are on the main page
+  - [ ] [**Physics Engineering**](https://physweb.hacettepe.edu.tr/index.php)
+    - Has `News` and `Announcements` on the main page
+    - TODO: Add "big parser" which parses different categories at once or don't touch parser name if returned announcements have a parser name.
+  - [ ] [**Geomatics Engineering**](https://geomatik.hacettepe.edu.tr)
+    - [ ] [_General_](https://geomatik.hacettepe.edu.tr/tr/duyurular/duyurular-4)
+    - [ ] [_Student_](https://geomatik.hacettepe.edu.tr/tr/duyurular/ogrenci_duyurulari-5)
+    - [ ] [_News/Events_](https://geomatik.hacettepe.edu.tr/tr/duyurular/haberler_ve_etkinlikler-7)
+  - [ ] [**Food Engineering**](https://food.hacettepe.edu.tr/tr/duyurular/guncel_duyurular-6)
+  - [ ] [**Civil Engineering**](https://ce.hacettepe.edu.tr/)
+    - **Note**: This site does not have a Turkish version
+    - [ ] [_Undergraduate_](https://ce.hacettepe.edu.tr/en/announcements/undergraduate-9)
+    - [ ] [_Graduate_](https://ce.hacettepe.edu.tr/en/announcements/graduate-10)
+    - [ ] [_Unknown_](https://ce.hacettepe.edu.tr/en/announcements/yapi_isleri_teknolojileri-13)
+      - Find a better name for this
+    - [ ] [_Other_](https://ce.hacettepe.edu.tr/en/announcements/butun_katagoriler-15)
+  - [ ] [**Geological Engineering**](https://jeomuh.hacettepe.edu.tr/)
+    - Has current annnouncements in the main page but it's a bit confusing. Will look deeper later.
+  - [ ] [**Hydrogeological Engineering**](https://hidro.hacettepe.edu.tr/)
+    - Has the same slop UI as geological engineering... Will look deeper later.
+  - [ ] [**Chemical Engineering**](https://cheng.hacettepe.edu.tr)
+    - [ ] [_General_](https://cheng.hacettepe.edu.tr/tr/duyurular/duyurular-1)
+    - [ ] [_Jobs_](https://cheng.hacettepe.edu.tr/tr/duyurular/is_duyurulari-6)
+  - [ ] [**Mining Engineering**](https://maden.hacettepe.edu.tr/tr/duyurular/duyurular-1)
+  - [ ] [**Mechanical Engineering**](https://me.hacettepe.edu.tr/tr/duyurular/duyurular-1)
+  - [ ] [**Nuclear Engineering**](https://nuke.hacettepe.edu.tr)
+    - [ ] [_General_](https://nuke.hacettepe.edu.tr/tr/duyurular/duyurular-1)
+    - [ ] [_Exams_](https://nuke.hacettepe.edu.tr/tr/duyurular/ders_ve_sinav_duyurulari-13)
+- [ ] [**Health Sciences**](https://sbf.hacettepe.edu.tr/tr/duyurular/duyurular-3)
+  - [ ] [**Nutrition and Dietetics**](https://bdb.hacettepe.edu.tr/tr/duyurular/duyurular-1)
+  - [ ] [**Child Development**](https://cge.hacettepe.edu.tr/tr/duyurular/anasayfa-3)
+  - [ ] [**Speech and Language Therapy**](https://dilkonusmaterapisi.hacettepe.edu.tr/duyurular.shtml)
+  - [ ] [**Occupational Therapy**](https://ergoterapi.hacettepe.edu.tr/tr/duyurular/guncel_duyurular-6)
+  - [ ] [**Audiology**](https://sbfodyoloji.hacettepe.edu.tr/tr/duyurular/duyurular-1)
+  - [ ] [**Paramedic**](https://paramedik.hacettepe.edu.tr/tr/duyurular/duyurular-1)
+- [ ] [**Sport Sciences**](https://sporbilimleri.hacettepe.edu.tr)
+  - It should have an API, use that.
+  - [ ] [**Physical Education and Sports Teaching**](https://beo.hacettepe.edu.tr)
+    - [ ] [_General_](https://beo.hacettepe.edu.tr/tr/duyurular/genel-1)
+    - [ ] [_Student_](https://beo.hacettepe.edu.tr/tr/duyurular/ogrenci-2)
+  - [ ] [**Exercise and Sport Sciences**](https://esb.hacettepe.edu.tr)
+    - [ ] [_General_](https://esb.hacettepe.edu.tr/tr/duyurular/genel-2)
+    - [ ] [_Student_](https://esb.hacettepe.edu.tr/tr/duyurular/ogrenci-3)
+  - [ ] [**Recreation**](https://rekreasyon.hacettepe.edu.tr/tr/duyurular/duyurular-2)
+- [ ] [**Medicine**](https://tip.hacettepe.edu.tr)
+  - [ ] [_Undergraduate_](https://tip.hacettepe.edu.tr/tr/duyurular/mezuniyet_oncesi_egitim_duyuru-1)
+  - [ ] [_Postgraduate_](https://tip.hacettepe.edu.tr/tr/duyurular/mezuniyet_sonrasi_egitim_duyur-4)
+  - [ ] [_Events_](https://tip.hacettepe.edu.tr/tr/duyurular/etkinlik-27)
+  - [ ] [_General_](https://tip.hacettepe.edu.tr/tr/duyurular/genel_duyuru-5)
+
+# Remaining
+- https://universitem.hacettepe.edu.tr/ankara-devlet-konservatuvari/
+- http://aem.hacettepe.edu.tr/
+- https://universitem.hacettepe.edu.tr/yabanci-diller-yuksekokulu/
+- https://universitem.hacettepe.edu.tr/hacettepe-aso-1-osb-meslek-yuksekokulu/
+- https://universitem.hacettepe.edu.tr/baskent-osb-teknik-bilimler-meslek-yuksekokulu/
+- https://universitem.hacettepe.edu.tr/saglik-hizmetleri-meslek-yuksekokulu/
+- https://universitem.hacettepe.edu.tr/sosyal-bilimler-meslek-yuksekokulu/
