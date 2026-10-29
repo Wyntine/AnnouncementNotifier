@@ -1,4 +1,23 @@
-import { Checker } from "./classes/Checker.js";
+import { AnnouncementServer } from "./classes/Server.js";
 
-const checker = new Checker();
-console.log(await checker.refresh());
+const server = new AnnouncementServer();
+
+// Handle graceful shutdown
+process.on("SIGINT", () => {
+  void (async () => {
+    console.log("\n[Server] Shutting down...");
+    await server.stop();
+    process.exit(0);
+  })();
+});
+
+process.on("SIGTERM", () => {
+  void (async () => {
+    console.log("\n[Server] Shutting down...");
+    await server.stop();
+    process.exit(0);
+  })();
+});
+
+// Start the server
+await server.start();

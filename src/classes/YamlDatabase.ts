@@ -58,6 +58,10 @@ export class YamlDatabase implements DatabaseHelper {
     return this;
   }
 
+  public getLastChecked(): number {
+    return this.lastChecked;
+  }
+
   public async save() {
     const newData: DatabaseSchema = {
       announcements: this.announcements,

@@ -16,3 +16,5 @@ dist
 # Extra files
 
 database/announcements.yml
+.cptr
+research/

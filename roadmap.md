@@ -1,4 +1,6 @@
-# School department sites
+# Announcement Notifier Roadmap
+
+## School department sites
 
 - [ ] [**SKSDB**](https://sksdb.hacettepe.edu.tr/bidbnew/announcements.php)
 - [x] [**YDYO**](https://ydyo.hacettepe.edu.tr)
@@ -164,7 +166,8 @@
     - [ ] [_General_](https://resim.hacettepe.edu.tr/tr/duyurular/duyurular-1)
     - [ ] [_Events_](https://resim.hacettepe.edu.tr/tr/duyurular/etkinlik_haberleri-4)
   - [ ] [**Ceramics**](https://seramikvecam.hacettepe.edu.tr/tr/duyurular/duyurular-1)
-- [ ] [**Nursing**](https://hemsirelik.hacettepe.edu.tr) may have more branches
+- [ ] [**Nursing**](https://hemsirelik.hacettepe.edu.tr)
+  - May have more branches
   - [ ] [_General_](https://hemsirelik.hacettepe.edu.tr/tr/duyurular/duyurular-2)
   - [ ] [_News_](https://hemsirelik.hacettepe.edu.tr/tr/duyurular/haberler-15)
   - [ ] [_Events_](https://hemsirelik.hacettepe.edu.tr/tr/duyurular/etkinlikler-17)
@@ -282,7 +285,8 @@
   - [ ] [_Events_](https://tip.hacettepe.edu.tr/tr/duyurular/etkinlik-27)
   - [ ] [_General_](https://tip.hacettepe.edu.tr/tr/duyurular/genel_duyuru-5)
 
-# Remaining
+## Remaining
+
 - https://universitem.hacettepe.edu.tr/ankara-devlet-konservatuvari/
 - http://aem.hacettepe.edu.tr/
 - https://universitem.hacettepe.edu.tr/yabanci-diller-yuksekokulu/
