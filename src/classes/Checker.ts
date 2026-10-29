@@ -1,104 +1,16 @@
 import type { AnnouncementSchema } from "../types/announcements.ts";
 import { fetchSchoolSitesWithTLSOff, isRequestOk } from "../utils/network.ts";
 import type { Parser } from "./Parser.ts";
-import { AIParser } from "./parsers/bbbf/AIParser.ts";
-import { BBBFParser } from "./parsers/bbbf/BBBFParser.ts";
-import { CSParser } from "./parsers/bbbf/CSParser.ts";
-import { DentistryParser } from "./parsers/DentistryParser.ts";
-import { GermanLiteratureParser } from "./parsers/literature/GermanLiteratureParser.ts";
-import { AmericanLiteratureParser } from "./parsers/literature/AmericanLiteratureParser.ts";
-import { AnthropologyParser } from "./parsers/literature/AnthropologyParser.ts";
-import { ArchaeologyParser } from "./parsers/literature/ArchaeologyParser.ts";
-import { TurkishDialetcsParser } from "./parsers/literature/TurkishDialetcsParser.ts";
-import { PhilosophyParser } from "./parsers/literature/PhilosophyParser.ts";
-import { EnglishLinguisticsParser } from "./parsers/literature/EnglishLinguisticsParser.ts";
-import { TIParser } from "./parsers/literature/TIParser.ts";
-import { PsychologyParser } from "./parsers/literature/PsychologyParser.ts";
-import { HistoryParser } from "./parsers/literature/HistoryParser.ts";
-import { TurkishLiteratureParser } from "./parsers/literature/TurkishLiteratureParser.ts";
-import { TurkishFolkloreParser } from "./parsers/literature/TurkishFolkloreParser.ts";
-import { LiteratureParser } from "./parsers/literature/LiteratureParser.ts";
-import { PharmacyParser } from "./parsers/PharmacyParser.ts";
-import { YDYOParser } from "./parsers/YDYOParser.ts";
-import { EducationParser } from "./parsers/education/EducationParser.ts";
-import { EducationalSciencesParser } from "./parsers/education/sciences/EducationalSciencesParser.ts";
-import { MEParser } from "./parsers/education/sciences/MEParser.ts";
-import { CIParser } from "./parsers/education/sciences/CIParser.ts";
-import { LLLParser } from "./parsers/education/sciences/LLLParser.ts";
-import { EAParser } from "./parsers/education/sciences/EAParser.ts";
-import { PCParser } from "./parsers/education/sciences/PCParser.ts";
-import { MathSciEducationParser } from "./parsers/education/mse/MathSciEducationParser.ts";
-import { BiologyEducationParser } from "./parsers/education/mse/BiologyEducationParser.ts";
-import { SciTeachingParser } from "./parsers/education/mse/SciTeachingParser.ts";
-import { PhysEducationParser } from "./parsers/education/mse/PhysEducationParser.ts";
-import { ChemEducationParser } from "./parsers/education/mse/ChemEducationParser.ts";
-import { MathEducationParser } from "./parsers/education/mse/mathedu/MathEducationParser.ts";
-import { MathTeachingParser } from "./parsers/education/mse/mathedu/MathTeachingParser.ts";
-import { ElemMathTeachParser } from "./parsers/education/mse/mathedu/ElemMathTeachParser.ts";
-import { SpecialEducationParser } from "./parsers/education/special/SpecialEducationParser.ts";
-import { GiftedEducationParser } from "./parsers/education/special/GiftedEducationParser.ts";
-import { ESIDParser } from "./parsers/education/special/ESIDParser.ts";
-import { ASDEducationParser } from "./parsers/education/special/ASDEducationParser.ts";
-import { TSSEducationParser } from "./parsers/education/TSSEducationParser.ts";
-import { PrimaryEducationParser } from "./parsers/education/primary/PrimaryEducationParser.ts";
-import { PreschoolEducationParser } from "./parsers/education/primary/PreschoolEducationParser.ts";
-import { ClassroomEducationParser } from "./parsers/education/primary/ClassroomEducationParser.ts";
-import { ForeignLangEduParser } from "./parsers/education/foreign/ForeignLangEduParser.ts";
-import { GermanLangTeachParser } from "./parsers/education/foreign/GermanLangTeachParser.ts";
-import { FrenchLangTeachParser } from "./parsers/education/foreign/FrenchLangTeachParser.ts";
-import { EnglishLangTeachParser } from "./parsers/education/foreign/EnglishLangTeachParser.ts";
+import { collectAllParsers } from "./parsers/index.ts";
 import { YamlDatabase } from "./YamlDatabase.ts";
 
 export class Checker {
-  private parsers: Parser[] = [
-    new BBBFParser(),
-    new CSParser(),
-    new AIParser(),
-    new YDYOParser(),
-    new DentistryParser(),
-    new PharmacyParser(),
-    new LiteratureParser(),
-    new GermanLiteratureParser(),
-    new AmericanLiteratureParser(),
-    new AnthropologyParser(),
-    new ArchaeologyParser(),
-    new TurkishDialetcsParser(),
-    new PhilosophyParser(),
-    new EnglishLinguisticsParser(),
-    new TIParser(),
-    new PsychologyParser(),
-    new HistoryParser(),
-    new TurkishLiteratureParser(),
-    new TurkishFolkloreParser(),
-    new EducationParser(),
-    new EducationalSciencesParser(),
-    new MEParser(),
-    new CIParser(),
-    new LLLParser(),
-    new EAParser(),
-    new PCParser(),
-    new MathSciEducationParser(),
-    new BiologyEducationParser(),
-    new SciTeachingParser(),
-    new PhysEducationParser(),
-    new ChemEducationParser(),
-    new MathEducationParser(),
-    new MathTeachingParser(),
-    new ElemMathTeachParser(),
-    new SpecialEducationParser(),
-    new GiftedEducationParser(),
-    new ESIDParser(),
-    new ASDEducationParser(),
-    new TSSEducationParser(),
-    new PrimaryEducationParser(),
-    new PreschoolEducationParser(),
-    new ClassroomEducationParser(),
-    new ForeignLangEduParser(),
-    new GermanLangTeachParser(),
-    new FrenchLangTeachParser(),
-    new EnglishLangTeachParser(),
-  ];
+  public parsers: Parser[];
   private database = new YamlDatabase();
+
+  constructor() {
+    this.parsers = collectAllParsers();
+  }
 
   /**
    * Pulls all announcements from all sites to a single array,
