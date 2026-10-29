@@ -9,6 +9,7 @@ export class Checker {
   private database = new YamlDatabase();
 
   constructor() {
+    // Add the parser to inside of the function to test it.
     this.parsers = collectAllParsers();
   }
 
