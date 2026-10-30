@@ -10,12 +10,12 @@ import { DentistryParser } from "./DentistryParser.ts";
 import { PharmacyParser } from "./PharmacyParser.ts";
 import { YDYOParser } from "./YDYOParser.ts";
 
-export function collectAllParsers(testParser?: Parser): Parser[] {
+export function collectAllParsers(...testParsers: Parser[]): Parser[] {
   const additionalParsers = [DentistryParser, PharmacyParser, YDYOParser];
-  return testParser ?
-      [testParser]
-    : [bbbf, education, literature]
+  return testParsers.length ? testParsers : (
+      [bbbf, education, literature]
         .flatMap((department) => Object.values(department))
         .concat(additionalParsers)
-        .map((parser) => new parser());
+        .map((parser) => new parser())
+    );
 }

@@ -151,7 +151,7 @@
   - [ ] [**Biology**](https://biology.hacettepe.edu.tr)
     - [ ] [_General_](https://biology.hacettepe.edu.tr/tr/duyurular/duyuru-6)
     - [ ] [_Conference_](https://biology.hacettepe.edu.tr/tr/duyurular/konferans-16)
-  - [**Maths**](https://mat.hacettepe.edu.tr/duyurular.html)
+  - [ ] [**Maths**](https://mat.hacettepe.edu.tr/duyurular.html)
 - [ ] [**Physical Therapy**](https://ftrfakulte.hacettepe.edu.tr)
   - [ ] [_General_](https://ftrfakulte.hacettepe.edu.tr/tr/duyurular/duyurular-1)
   - [ ] [_News_](https://ftrfakulte.hacettepe.edu.tr/tr/duyurular/haberler-3)
@@ -287,10 +287,10 @@
 
 ## Remaining
 
-- https://universitem.hacettepe.edu.tr/ankara-devlet-konservatuvari/
-- http://aem.hacettepe.edu.tr/
-- https://universitem.hacettepe.edu.tr/yabanci-diller-yuksekokulu/
-- https://universitem.hacettepe.edu.tr/hacettepe-aso-1-osb-meslek-yuksekokulu/
-- https://universitem.hacettepe.edu.tr/baskent-osb-teknik-bilimler-meslek-yuksekokulu/
-- https://universitem.hacettepe.edu.tr/saglik-hizmetleri-meslek-yuksekokulu/
-- https://universitem.hacettepe.edu.tr/sosyal-bilimler-meslek-yuksekokulu/
+- <https://universitem.hacettepe.edu.tr/ankara-devlet-konservatuvari/>
+- <http://aem.hacettepe.edu.tr/>
+- <https://universitem.hacettepe.edu.tr/yabanci-diller-yuksekokulu/>
+- <https://universitem.hacettepe.edu.tr/hacettepe-aso-1-osb-meslek-yuksekokulu/>
+- <https://universitem.hacettepe.edu.tr/baskent-osb-teknik-bilimler-meslek-yuksekokulu/>
+- <https://universitem.hacettepe.edu.tr/saglik-hizmetleri-meslek-yuksekokulu/>
+- <https://universitem.hacettepe.edu.tr/sosyal-bilimler-meslek-yuksekokulu/>
