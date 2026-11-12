@@ -1,4 +1,4 @@
-import { AnnouncementServer } from "./classes/Server.js";
+import { AnnouncementServer } from "./classes/Server.ts";
 
 const server = new AnnouncementServer();
 

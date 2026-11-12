@@ -10,23 +10,23 @@
     "strict": true,
 
     /** If compiling (TS -> JS) */
-    "moduleResolution": "NodeNext",
-    "module": "NodeNext",
-    "outDir": "dist",
-    "sourceMap": true,
+    // "moduleResolution": "NodeNext",
+    // "module": "NodeNext",
+    // "outDir": "dist",
+    // "sourceMap": true,
 
     /** If not compiling */
-    // "moduleResolution": "bundler",
-    // "module": "esnext",
-    // "noEmit": true,
-    // "allowImportingTsExtensions": true,
+    "moduleResolution": "bundler",
+    "module": "esnext",
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
 
     "rewriteRelativeImportExtensions": true,
     "erasableSyntaxOnly": true,
     "rootDir": "src",
     "removeComments": true,
     "types": ["node"],
-    "lib": ["ES2024"]
+    "lib": ["ESNext"]
   },
   "include": ["src/**/*.ts"]
 }
