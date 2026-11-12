@@ -18,3 +18,4 @@ dist
 database/announcements.yml
 .cptr
 research/
+.env
