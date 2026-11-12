@@ -10,10 +10,32 @@ import { DentistryParser } from "./DentistryParser.ts";
 import { PharmacyParser } from "./PharmacyParser.ts";
 import { YDYOParser } from "./YDYOParser.ts";
 
+// Physical Therapy
+import { PhysicalTherapyParser } from "./PhysicalTherapyParser.ts";
+
+// Law
+import { LawParser } from "./LawParser.ts";
+
+// Namespace exports for "import * as parsers from '..."
+export { bbbf, education, literature };
+export { DentistryParser };
+export { PharmacyParser };
+export { YDYOParser };
+export { PhysicalTherapyParser };
+export { LawParser };
+
 export function collectAllParsers(): Parser[] {
-  const additionalParsers = [DentistryParser, PharmacyParser, YDYOParser];
-  return [bbbf, education, literature]
+  const additionalParsers = [
+    DentistryParser,
+    PharmacyParser,
+    YDYOParser,
+    PhysicalTherapyParser,
+    LawParser,
+  ] as const;
+
+  const allParserConstructors = [bbbf, education, literature]
     .flatMap((department) => Object.values(department))
-    .concat(additionalParsers)
-    .map((parser) => new parser());
+    .concat(additionalParsers);
+
+  return allParserConstructors.map((parser) => new parser());
 }

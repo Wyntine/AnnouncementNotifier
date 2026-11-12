@@ -17,10 +17,16 @@ export class Checker {
    * sorts them, and returns it.
    */
   public async refresh(): Promise<AnnouncementSchema[]> {
+    return this.fetchParsers(...this.parsers);
+  }
+
+  public async fetchParsers(
+    ...parsers: Parser[]
+  ): Promise<AnnouncementSchema[]> {
     await this.wait();
     const announcements: AnnouncementSchema[] = [];
 
-    for (const parser of this.parsers) {
+    for (const parser of parsers) {
       const sites = parser.sites;
       const name = parser.name;
 

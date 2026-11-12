@@ -54,14 +54,18 @@ export function parseLinkByType(
 // TODO: Find a better way to filter for attachment extensions in the future
 // TODO: without defining a static file extension list.
 export function isLinkAFile(link: string): boolean {
-  const url = new URL(link);
-  const linkExtension = url.pathname.split("/").at(-1);
+  try {
+    const url = new URL(link);
+    const linkExtension = url.pathname.split("/").at(-1);
 
-  return (
-    !!linkExtension?.includes(".") &&
-    !excludedFileExtensions.find((file) => linkExtension.includes(file)) &&
-    !linkHasException(link)
-  );
+    return (
+      !!linkExtension?.includes(".") &&
+      !excludedFileExtensions.find((file) => linkExtension.includes(file)) &&
+      !linkHasException(link)
+    );
+  } catch {
+    return false;
+  }
 }
 
 export function linkHasException(link: string): boolean {

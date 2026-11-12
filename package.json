@@ -7,6 +7,7 @@
   "scripts": {
     "start": "node dist/index.mjs",
     "dev": "tsx src/index.ts",
+    "test": "tsx src/test.ts",
     "build": "tsdown",
     "prebuild": "run-s lint",
     "prepack": "run-s lint build",
