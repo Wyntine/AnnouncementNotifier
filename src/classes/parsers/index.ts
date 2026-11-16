@@ -4,25 +4,25 @@ import type { Parser } from "../Parser.ts";
 import * as bbbf from "./bbbf/index.ts";
 import * as education from "./education/index.ts";
 import * as literature from "./literature/index.ts";
+import * as finearts from "./finearts/index.ts";
+import * as science from "./science/index.ts";
 
 // Other parsers
 import { DentistryParser } from "./DentistryParser.ts";
 import { PharmacyParser } from "./PharmacyParser.ts";
 import { YDYOParser } from "./YDYOParser.ts";
-
-// Physical Therapy
 import { PhysicalTherapyParser } from "./PhysicalTherapyParser.ts";
-
-// Law
 import { LawParser } from "./LawParser.ts";
+import { NursingParser } from "./NursingParser.ts";
 
 // Namespace exports for "import * as parsers from '..."
-export { bbbf, education, literature };
+export { bbbf, education, literature, finearts, science };
 export { DentistryParser };
 export { PharmacyParser };
 export { YDYOParser };
 export { PhysicalTherapyParser };
 export { LawParser };
+export { NursingParser };
 
 export function collectAllParsers(): Parser[] {
   const additionalParsers = [
@@ -31,9 +31,10 @@ export function collectAllParsers(): Parser[] {
     YDYOParser,
     PhysicalTherapyParser,
     LawParser,
+    NursingParser,
   ] as const;
 
-  const allParserConstructors = [bbbf, education, literature]
+  const allParserConstructors = [bbbf, education, literature, finearts, science]
     .flatMap((department) => Object.values(department))
     .concat(additionalParsers);
 

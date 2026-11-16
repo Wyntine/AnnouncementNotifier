@@ -1,7 +1,6 @@
 // Education Department Parsers
 
-export { EducationParser } from "./EducationParser.ts";
-export { TSSEducationParser } from "./TSSEducationParser.ts";
+export * from "./OtherParsers.ts";
 
 // Foreign language education parsers
 export * from "./foreign/index.ts";

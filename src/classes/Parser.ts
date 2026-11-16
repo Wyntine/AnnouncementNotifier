@@ -2,9 +2,9 @@ import { load } from "cheerio";
 import type { ParsedAnnouncement } from "../types/announcements.ts";
 import {
   isLinkAFile,
-  normalizeUnevenHTML,
   parseLinkByType,
   linkHasException,
+  normalizeNewlines,
 } from "../utils/string.ts";
 import {
   fetchSchoolSitesWithTLSOff,
@@ -43,6 +43,7 @@ export class Parser {
 
   public parse(
     siteData: string,
+    limit?: number,
   ): ParsedAnnouncement[] | Promise<ParsedAnnouncement[]> {
     const $ = load(siteData);
 
@@ -59,9 +60,11 @@ export class Parser {
         const date = td.find("span.tarih").first().text();
 
         return {
-          link: this.addBaseSite(anchor.attr("href")?.trim()),
+          link: this.addBaseSite(
+            anchor.attr("href")?.trim().replaceAll("\n", ""),
+          ),
           date: new Date(date).valueOf(),
-          title: normalizeUnevenHTML(anchor.text().trim()),
+          title: normalizeNewlines(anchor.text().trim()),
         };
       })
       .get();
@@ -69,8 +72,9 @@ export class Parser {
     // TODO: Find a non-chaotic way to fix that. May require a bigger refactor.
     return (async (): Promise<ParsedAnnouncement[]> => {
       const announcements = [];
+      const finalResults = limit ? result.slice(0, limit) : result;
 
-      for (const { link, date, title } of result) {
+      for (const { link, date, title } of finalResults) {
         if (!title || !Number.isFinite(date) || !link) {
           // TODO: Log error message
           console.log("[Parser] Missing announcement data.");
@@ -136,7 +140,7 @@ export class Parser {
   public addBaseSite<Link extends string | undefined>(link: Link): Link {
     if (!link) return undefined as Link;
 
-    return (
+    const finalLink =
       link.startsWith("http") ? link
       : link.startsWith("/") ?
         unrelativeSiteRegex.test(link) ?
@@ -144,7 +148,9 @@ export class Parser {
         : `https://${this.baseSite}${link}`
       : linkHasException(link) ? link
       : link.split("/").at(0)?.includes(".") ? `https://${link}`
-      : `https://${this.baseSite}/${link}`) as Link;
+      : `https://${this.baseSite}/${link}`;
+
+    return (finalLink ? encodeURI(finalLink) : undefined) as Link;
   }
 }
 

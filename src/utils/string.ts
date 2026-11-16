@@ -12,6 +12,10 @@ export function normalizeUnevenHTMLToArray(text: string): string[] {
     .map((i) => i.replaceAll("\n", " ").replaceAll(/ +/g, " ").trim());
 }
 
+export function normalizeNewlines(text: string): string {
+  return text.replace(/\n(?!\n)/g, " ").replaceAll("  ", " ");
+}
+
 /**
  * Trims and normalizes uneven spaces from the text.
  */

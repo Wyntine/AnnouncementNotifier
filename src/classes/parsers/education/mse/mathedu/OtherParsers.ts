@@ -1,5 +1,25 @@
 import { Parser } from "../../../../Parser.ts";
 
+export class ElemMathTeachParser extends Parser {
+  constructor() {
+    super(
+      "edu-mse-mathedu-elem",
+      "imo.hacettepe.edu.tr",
+      "/tr/duyurular/duyurular-1",
+    );
+  }
+}
+
+export class MathEducationParser extends Parser {
+  constructor() {
+    super(
+      "edu-mse-mathedu",
+      "mategt.hacettepe.edu.tr",
+      "/tr/duyurular/duyurular-1",
+    );
+  }
+}
+
 export class MathTeachingParser extends Parser {
   constructor() {
     super("edu-mse-mathedu-teach", "ofmamat.hacettepe.edu.tr", {

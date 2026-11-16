@@ -19,3 +19,4 @@ database/announcements.yml
 .cptr
 research/
 .env
+test.json

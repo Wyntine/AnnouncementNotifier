@@ -7,6 +7,7 @@ import { YamlDatabase } from "./YamlDatabase.ts";
 export class Checker {
   public parsers: Parser[];
   private database = new YamlDatabase();
+  private testModeLimit = 0;
 
   constructor() {
     this.parsers = collectAllParsers();
@@ -17,12 +18,18 @@ export class Checker {
    * sorts them, and returns it.
    */
   public async refresh(): Promise<AnnouncementSchema[]> {
-    return this.fetchParsers(...this.parsers);
+    return this.fetchParsers({ parsers: this.parsers });
   }
 
-  public async fetchParsers(
-    ...parsers: Parser[]
-  ): Promise<AnnouncementSchema[]> {
+  public enableTestMode(parserAnnouncementLimit: number): void {
+    this.testModeLimit = parserAnnouncementLimit;
+  }
+
+  public async fetchParsers({
+    parsers,
+  }: {
+    parsers: Parser[];
+  }): Promise<AnnouncementSchema[]> {
     await this.wait();
     const announcements: AnnouncementSchema[] = [];
 
@@ -65,10 +72,12 @@ export class Checker {
     // TODO: I can use a secondary database to check if initialization is complete for
     // TODO: each parser.
     const siteData = await request.body.text();
-    return (await parser.parse(siteData)).map((announcement) => ({
-      ...announcement,
-      parser: parserName,
-    }));
+    return (await parser.parse(siteData, this.testModeLimit)).map(
+      (announcement) => ({
+        ...announcement,
+        parser: parserName,
+      }),
+    );
   }
 
   private async wait() {
