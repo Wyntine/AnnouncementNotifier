@@ -20,4 +20,5 @@ process.on("SIGTERM", () => {
 });
 
 // Start the server
+// TODO: Wrap server.start() in try/catch; handle port-in-use and other startup errors
 await server.start();

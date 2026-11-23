@@ -20,6 +20,7 @@ export class YamlDatabase implements DatabaseHelper {
   private isInitialized = false;
 
   constructor() {
+    // TODO: Handle load() rejection (unhandled promise rejection) and set isInitialized on error
     void this.load().then(() => (this.isInitialized = true));
   }
 
@@ -44,6 +45,7 @@ export class YamlDatabase implements DatabaseHelper {
   }
 
   public addAnnouncements(data: AnnouncementSchema[]): this {
+    // TODO: Deduplicate announcements (by id/link/title+date) to avoid unbounded growth
     const newAnnouncements = this.announcements.concat(data);
     const sortedAnnouncements = newAnnouncements.toSorted(
       (a, b) => b.date - a.date,
@@ -63,6 +65,7 @@ export class YamlDatabase implements DatabaseHelper {
   }
 
   public async save() {
+    // TODO: Ensure database directory exists before writing
     const newData: DatabaseSchema = {
       announcements: this.announcements,
       lastChecked: this.lastChecked,
@@ -77,6 +80,7 @@ export class YamlDatabase implements DatabaseHelper {
       // TODO: Warn about new database creation.
     }
 
+    // TODO: Handle malformed YAML (parse can throw)
     const data = parse(
       await readFile(YamlDatabase.filePath, "utf-8"),
     ) as DatabaseSchema;
@@ -91,6 +95,7 @@ export class YamlDatabase implements DatabaseHelper {
   }
 
   public async waitUntilInitialized() {
+    // TODO: Replace recursive busy-wait with a proper promise/timeout; handle load failure
     if (!this.isInitialized) {
       await sleep(500);
       await this.waitUntilInitialized();

@@ -1,3 +1,4 @@
+// TODO: Unused utility - remove or use
 export function extractConditionally<
   T extends Record<string, unknown>,
   K extends keyof T,

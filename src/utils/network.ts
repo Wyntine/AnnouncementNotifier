@@ -6,6 +6,7 @@ export async function fetchSchoolSitesWithTLSOff(url: string) {
   const urlData = new URL(url);
   const { origin, pathname: path } = urlData;
 
+  // TODO: Reuse module-level Agent instances instead of creating new ones per call
   const insecureAgent = new Agent({ connect: { rejectUnauthorized: false } });
   const secureAgent = new Agent();
   const requestData = { origin, path, method: "GET" };
@@ -25,6 +26,7 @@ export function urlOrigin(url: string): string {
 }
 
 // TODO: Implement solid error handling later
+// TODO: Return boolean instead of string|undefined; handle malformed URLs in urlOrigin
 export function isUnreachable(url: string) {
   const origin = urlOrigin(url);
   return unreachableSites.find((site) => origin.includes(site));

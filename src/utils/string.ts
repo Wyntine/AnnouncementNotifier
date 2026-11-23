@@ -64,6 +64,7 @@ export function isLinkAFile(link: string): boolean {
 
     return (
       !!linkExtension?.includes(".") &&
+      // TODO: Use endsWith instead of includes for extension matching
       !excludedFileExtensions.find((file) => linkExtension.includes(file)) &&
       !linkHasException(link)
     );
@@ -72,6 +73,7 @@ export function isLinkAFile(link: string): boolean {
   }
 }
 
+// TODO: Check host instead of includes for @gmail.com
 export function linkHasException(link: string): boolean {
   return link.startsWith("mailto:") || link.includes("@gmail.com");
 }

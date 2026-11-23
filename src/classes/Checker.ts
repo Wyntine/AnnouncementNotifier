@@ -6,6 +6,7 @@ import { YamlDatabase } from "./YamlDatabase.ts";
 
 export class Checker {
   public parsers: Parser[];
+  // TODO: Checker creates its own YamlDatabase instance just to wait for init; share the server's instance instead
   private database = new YamlDatabase();
   private testModeLimit = 0;
 
@@ -22,6 +23,7 @@ export class Checker {
   }
 
   public enableTestMode(parserAnnouncementLimit: number): void {
+    // TODO: Add a way to disable test mode (reset limit to 0)
     this.testModeLimit = parserAnnouncementLimit;
   }
 
@@ -33,6 +35,7 @@ export class Checker {
     await this.wait();
     const announcements: AnnouncementSchema[] = [];
 
+    // TODO: Process parsers concurrently (with concurrency limit) instead of sequentially
     for (const parser of parsers) {
       const sites = parser.sites;
       const name = parser.name;
@@ -56,6 +59,7 @@ export class Checker {
     parserName: string,
     siteUrl: string,
   ): Promise<AnnouncementSchema[]> {
+    // TODO: Wrap fetch in try/catch; a single failing parser crashes the whole refresh
     const request = await fetchSchoolSitesWithTLSOff(
       parser.addBaseSite(siteUrl),
     );

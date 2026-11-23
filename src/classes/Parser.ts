@@ -42,6 +42,7 @@ export class Parser {
     }
   }
 
+  // TODO: Return type is a union but always a Promise; change to Promise<ParsedAnnouncement[]>
   public parse(
     siteData: string,
     limit?: number,
@@ -101,6 +102,7 @@ export class Parser {
           continue;
         }
 
+        // TODO: parseSubSite fetches every announcement link (N+1 requests); add caching/concurrency limit
         const links = parseLinkByType(
           !isParseable ? [link] : await this.parseSubSite(link),
           this.urlsAsFile,
@@ -119,6 +121,7 @@ export class Parser {
   }
 
   public async parseSubSite(siteLink: string): Promise<string[]> {
+    // TODO: Wrap fetch in try/catch; a single failing sub-site crashes the whole parse
     const response = await fetchSchoolSitesWithTLSOff(siteLink);
 
     if (!isRequestOk(response.statusCode)) {
@@ -146,6 +149,7 @@ export class Parser {
   public addBaseSite<Link extends string | undefined>(link: Link): Link {
     if (!link) return undefined as Link;
 
+    // TODO: addBaseSite branch logic is convoluted and fragile; simplify
     const finalLink =
       link.startsWith("http") ? link
       : link.startsWith("/") ?
