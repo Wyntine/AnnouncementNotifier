@@ -23,7 +23,7 @@
     "wyntine"
   ],
   "author": "Wyntine",
-  "license": "MIT",
+  "license": "AGPL-3.0-only",
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@tsconfig/strictest": "^2.0.8",

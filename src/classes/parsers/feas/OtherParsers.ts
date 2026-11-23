@@ -23,9 +23,11 @@ export class EconomicsParser extends Parser {
 
 export class HealthManagementParser extends Parser {
   constructor() {
-    super("feas-hm", "sid.hacettepe.edu.tr", {
-      general: "/tr/duyurular/guncel_duyurular-2",
-    });
+    super(
+      "feas-hm",
+      "sid.hacettepe.edu.tr",
+      "/tr/duyurular/guncel_duyurular-2",
+    );
   }
 }
 
