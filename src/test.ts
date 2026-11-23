@@ -1,17 +1,25 @@
 import { writeFile } from "node:fs/promises";
 import { Checker } from "./classes/Checker.ts";
-import type { Parser } from "./classes/Parser.ts";
-import * as parsers from "./classes/parsers/index";
+import { Parser } from "./classes/Parser.ts";
+import * as parsers from "./classes/parsers/index.ts";
 
-const checkedParsers = [parsers.PhysicalTherapyParser].map(
-  (parser) => new parser(),
-) satisfies Parser[];
+const checkedParsers = [parsers.feas]
+  .flatMap<new () => Parser>((parser) =>
+    typeof parser === "function" ? parser : Object.values(parser),
+  )
+  .map((parser) => new parser()) satisfies Parser[];
+
+console.log(checkedParsers);
 
 const checker = new Checker();
-checker.enableTestMode(0);
+checker.enableTestMode(5);
 
 const parserData = await checker.fetchParsers({
   parsers: checkedParsers,
 });
 
-await writeFile("./test.json", JSON.stringify(parserData, null, " "));
+const time = new Date();
+await writeFile(
+  `./test/test-${time.toLocaleDateString("tr").split(".").toReversed().join(".")}-${time.toLocaleTimeString("tr")}.json`,
+  JSON.stringify(parserData, null, " "),
+);

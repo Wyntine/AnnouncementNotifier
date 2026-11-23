@@ -5,6 +5,7 @@ import {
   parseLinkByType,
   linkHasException,
   normalizeNewlines,
+  encodeLink,
 } from "../utils/string.ts";
 import {
   fetchSchoolSitesWithTLSOff,
@@ -46,6 +47,11 @@ export class Parser {
     limit?: number,
   ): ParsedAnnouncement[] | Promise<ParsedAnnouncement[]> {
     const $ = load(siteData);
+
+    // Some sites embed inline <style> and <script> tags inside the
+    // announcement rows (e.g. "new" blink effects). Remove them so their
+    // source text does not leak into the extracted announcement titles.
+    $("style, script").remove();
 
     const result = $("tbody > tr")
       .map((_, row) => {
@@ -150,7 +156,7 @@ export class Parser {
       : link.split("/").at(0)?.includes(".") ? `https://${link}`
       : `https://${this.baseSite}/${link}`;
 
-    return (finalLink ? encodeURI(finalLink) : undefined) as Link;
+    return (finalLink ? encodeLink(finalLink) : undefined) as Link;
   }
 }
 

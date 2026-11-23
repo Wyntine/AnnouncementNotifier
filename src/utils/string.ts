@@ -75,3 +75,20 @@ export function isLinkAFile(link: string): boolean {
 export function linkHasException(link: string): boolean {
   return link.startsWith("mailto:") || link.includes("@gmail.com");
 }
+
+/**
+ * Encodes a link exactly once.
+ *
+ * Links scraped from the sites are often already percent-encoded (e.g.
+ * `26-27%20duyurular%20(m).pdf`). Applying `encodeURI` directly would escape
+ * every existing `%` into `%25`, producing a broken double-encoded link.
+ * Decoding before encoding keeps both raw and pre-encoded links intact.
+ */
+export function encodeLink(link: string): string {
+  try {
+    return encodeURI(decodeURI(link));
+  } catch {
+    // Some escapes may be malformed (e.g. a bare "%"); encode as-is then.
+    return encodeURI(link);
+  }
+}
