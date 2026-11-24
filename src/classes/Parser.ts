@@ -1,17 +1,17 @@
 import { load } from "cheerio";
 import type { ParsedAnnouncement } from "../types/announcements.ts";
 import {
-  isLinkAFile,
-  parseLinkByType,
-  linkHasException,
-  normalizeNewlines,
-  encodeLink,
-} from "../utils/string.ts";
-import {
   fetchSchoolSitesWithTLSOff,
   isRequestOk,
   isUnreachable,
 } from "../utils/network.ts";
+import {
+  encodeLink,
+  isLinkAFile,
+  linkHasException,
+  normalizeNewlines,
+  parseLinkByType,
+} from "../utils/string.ts";
 
 const unrelativeSiteRegex = /^\/{2,}.+/;
 

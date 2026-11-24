@@ -38,6 +38,6 @@
     "enabled": false
   },
   "assist": {
-    "enabled": false
+    "enabled": true
   }
 }

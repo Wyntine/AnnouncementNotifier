@@ -1,14 +1,14 @@
+import { existsSync } from "node:fs";
+import { readFile, writeFile } from "node:fs/promises";
+import { join } from "node:path";
+import { promisify } from "node:util";
 import { parse, stringify } from "yaml";
+import type { AnnouncementSchema } from "../types/announcements.ts";
 import type {
   DatabaseHelper,
   DatabaseSchema,
   GetAnnouncementsOptions,
 } from "../types/databases.ts";
-import type { AnnouncementSchema } from "../types/announcements.ts";
-import { existsSync } from "node:fs";
-import { join } from "node:path";
-import { readFile, writeFile } from "node:fs/promises";
-import { promisify } from "node:util";
 
 const sleep = promisify(setTimeout);
 
