@@ -1,8 +1,8 @@
 {
   "name": "announcement-notifier",
   "version": "1.2.0",
-  "description": "",
-  "main": "dist/index.js",
+  "description": "A backend to fetch school notifications and send them.",
+  "main": "dist/index.mjs",
   "type": "module",
   "scripts": {
     "start": "node dist/index.mjs",
@@ -30,25 +30,25 @@
     "@biomejs/biome": "^2.6.8",
     "@eslint/js": "^10.0.1",
     "@tsconfig/strictest": "^2.0.8",
+    "@types/html-to-text": "^9.0.4",
     "@types/node": "^26.6.6",
     "@types/ws": "^8.18.2",
     "npm-run-all": "^4.1.5",
     "tsdown": "^0.23.7",
+    "tsx": "^4.23.15",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.72.2"
   },
   "dependencies": {
-    "@types/html-to-text": "^9.0.4",
     "cheerio": "^1.2.0",
     "html-to-text": "^10.0.1",
-    "tsx": "^4.23.15",
     "undici": "^8.12.4",
     "ws": "^8.22.2",
     "yaml": "^2.9.1"
   },
   "exports": {
     ".": {
-      "require": "./dist/index.js",
+      "require": "./dist/index.mjs",
       "import": "./dist/index.mjs"
     }
   },
