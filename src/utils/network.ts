@@ -1,6 +1,8 @@
 import { Agent } from "undici";
 
-export const unreachableSites: string[] = [/*"etkinlikler.hacettepe.edu.tr"*/];
+export const unreachableSites: string[] = [
+  /*"etkinlikler.hacettepe.edu.tr"*/
+];
 
 export async function fetchSchoolSitesWithTLSOff(url: string) {
   const urlData = new URL(url);
@@ -12,8 +14,8 @@ export async function fetchSchoolSitesWithTLSOff(url: string) {
   const requestData = { origin, path, method: "GET" };
 
   console.log(`Fetching site "${url}"...`);
-  return origin.endsWith(".hacettepe.edu.tr") ?
-      insecureAgent.request(requestData)
+  return origin.endsWith(".hacettepe.edu.tr")
+    ? insecureAgent.request(requestData)
     : secureAgent.request(requestData);
 }
 

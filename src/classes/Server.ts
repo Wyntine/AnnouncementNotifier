@@ -127,11 +127,11 @@ export class AnnouncementServer {
     res: ServerResponse,
   ): void {
     const queryString = req.url?.split("?")[1] ?? "";
-    const urlParams =
-      queryString ? (parse(queryString) as Record<string, unknown>) : {};
-    const parsers =
-      Array.isArray(urlParams["parsers"]) ?
-        (urlParams["parsers"] as string[])
+    const urlParams = queryString
+      ? (parse(queryString) as Record<string, unknown>)
+      : {};
+    const parsers = Array.isArray(urlParams["parsers"])
+      ? (urlParams["parsers"] as string[])
       : [];
     const after = parseInt((urlParams["after"] as string) || "0", 10);
 

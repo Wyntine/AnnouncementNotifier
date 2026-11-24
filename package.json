@@ -12,9 +12,11 @@
     "prebuild": "run-s lint",
     "prepack": "run-s lint build",
     "lint": "run-s typeCheck eslint format",
-    "eslint": "eslint --fix ./src",
-    "typeCheck": "tsc --noEmit",
-    "format": "prettier -w ."
+    "eslint": "eslint --fix ./src ./scripts",
+    "typeCheck": "tsc --noEmit && tsc --noEmit -p ./scripts/tsconfig.json",
+    "format": "tsx scripts/lint.ts format --write .",
+    "check": "tsx scripts/lint.ts check .",
+    "postinstall": "tsx scripts/symlink-biome.ts"
   },
   "keywords": [
     "announcement",
@@ -25,13 +27,12 @@
   "author": "Wyntine",
   "license": "AGPL-3.0-only",
   "devDependencies": {
+    "@biomejs/biome": "^2.6.8",
     "@eslint/js": "^10.0.1",
     "@tsconfig/strictest": "^2.0.8",
     "@types/node": "^26.6.6",
     "@types/ws": "^8.18.2",
-    "@wyntine/prettier-config": "^1.1.1",
     "npm-run-all": "^4.1.5",
-    "prettier-eslint": "^17.1.2",
     "tsdown": "^0.23.7",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.72.2"
@@ -45,7 +46,6 @@
     "ws": "^8.22.2",
     "yaml": "^2.9.1"
   },
-  "prettier": "@wyntine/prettier-config",
   "exports": {
     ".": {
       "require": "./dist/index.js",

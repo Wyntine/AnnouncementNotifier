@@ -150,15 +150,17 @@ export class Parser {
     if (!link) return undefined as Link;
 
     // TODO: addBaseSite branch logic is convoluted and fragile; simplify
-    const finalLink =
-      link.startsWith("http") ? link
-      : link.startsWith("/") ?
-        unrelativeSiteRegex.test(link) ?
-          `https://${link.replace(/^\/+/, "")}`
-        : `https://${this.baseSite}${link}`
-      : linkHasException(link) ? link
-      : link.split("/").at(0)?.includes(".") ? `https://${link}`
-      : `https://${this.baseSite}/${link}`;
+    const finalLink = link.startsWith("http")
+      ? link
+      : link.startsWith("/")
+        ? unrelativeSiteRegex.test(link)
+          ? `https://${link.replace(/^\/+/, "")}`
+          : `https://${this.baseSite}${link}`
+        : linkHasException(link)
+          ? link
+          : link.split("/").at(0)?.includes(".")
+            ? `https://${link}`
+            : `https://${this.baseSite}/${link}`;
 
     return (finalLink ? encodeLink(finalLink) : undefined) as Link;
   }

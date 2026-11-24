@@ -29,16 +29,14 @@ export class YamlDatabase implements DatabaseHelper {
   ): AnnouncementSchema[] {
     const { parsers = [], after } = options;
 
-    const parserFiltered =
-      parsers.length ?
-        this.announcements.filter((announcement) =>
+    const parserFiltered = parsers.length
+      ? this.announcements.filter((announcement) =>
           parsers.includes(announcement.parser),
         )
       : this.announcements;
 
-    const timeFiltered =
-      after ?
-        parserFiltered.filter((announcement) => announcement.date > after)
+    const timeFiltered = after
+      ? parserFiltered.filter((announcement) => announcement.date > after)
       : parserFiltered;
 
     return timeFiltered;
