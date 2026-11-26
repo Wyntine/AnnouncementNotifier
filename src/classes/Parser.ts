@@ -20,18 +20,27 @@ export class Parser {
   public baseSite: string;
   public sites: string | SubParsers;
   public urlsAsFile: string[] = [];
+  /**
+   * Character encoding used to decode the announcement page body.
+   * Defaults to UTF-8 (the TextDecoder default). Some Hacettepe sites
+   * serve legacy encodings (e.g. ISO-8859-9); set this to decode them.
+   */
+  public siteEncoding?: string;
 
   /**
    * @param name The parser's base name
    * @param baseSite The site to be parsed
    * @param sites Relative paths of (starting with `/`) sites that will be parsed.
    *  Can be mapped to assign sub-parsers to specific sites.
+   * @param urlsAsFile Additional URLs to treat as files.
+   * @param siteEncoding Optional character encoding (e.g. "iso-8859-9") used to decode the page.
    */
   constructor(
     name: string,
     baseSite: string,
     sites: string | SubParsers,
     urlsAsFile?: string[],
+    siteEncoding?: string,
   ) {
     this.name = name;
     this.baseSite = baseSite;
@@ -39,6 +48,10 @@ export class Parser {
 
     if (urlsAsFile) {
       this.urlsAsFile = urlsAsFile;
+    }
+
+    if (siteEncoding) {
+      this.siteEncoding = siteEncoding;
     }
   }
 
@@ -130,7 +143,7 @@ export class Parser {
       return [];
     }
 
-    const siteData = await response.body.text();
+    const siteData = await this.decodeBody(response);
     const $ = load(siteData);
     return $(".icerik").extract({
       links: [
@@ -143,11 +156,26 @@ export class Parser {
   }
 
   /**
+   * Decodes the response body using this parser's character encoding.
+   */
+  public async decodeBody(response: {
+    body: { bytes: () => Promise<Uint8Array> };
+  }): Promise<string> {
+    const bytes = await response.body.bytes();
+    return new TextDecoder(this.siteEncoding ?? "utf-8").decode(bytes);
+  }
+
+  /**
    * Changes the link to ensure that the link starts with "https://"
    * and if it's a relative path, adds the base site URL.
    */
   public addBaseSite<Link extends string | undefined>(link: Link): Link {
     if (!link) return undefined as Link;
+
+    // mailto: and tel: are URI schemes, not site paths; keep them intact.
+    if (link.startsWith("mailto:") || link.startsWith("tel:")) {
+      return link;
+    }
 
     // TODO: addBaseSite branch logic is convoluted and fragile; simplify
     const finalLink = link.startsWith("http")

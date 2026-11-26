@@ -3,7 +3,7 @@ import { Checker } from "./classes/Checker.ts";
 import { Parser } from "./classes/Parser.ts";
 import * as parsers from "./classes/parsers/index.ts";
 
-const checkedParsers = [parsers.feas]
+const checkedParsers = [parsers.health.SpeechTherapyParser]
   .flatMap<new () => Parser>((parser) =>
     typeof parser === "function" ? parser : Object.values(parser),
   )

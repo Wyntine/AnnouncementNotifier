@@ -6,6 +6,7 @@ import * as education from "./education/index.ts";
 import * as engineering from "./engineering/index.ts";
 import * as feas from "./feas/index.ts";
 import * as finearts from "./finearts/index.ts";
+import * as health from "./health/index.ts";
 import { LawParser } from "./LawParser.ts";
 import * as literature from "./literature/index.ts";
 import { NursingParser } from "./NursingParser.ts";
@@ -21,6 +22,7 @@ export {
   engineering,
   feas,
   finearts,
+  health,
   LawParser,
   literature,
   NursingParser,
@@ -47,6 +49,7 @@ export function collectAllParsers(): Parser[] {
     engineering,
     literature,
     finearts,
+    health,
     science,
   ]
     .flatMap((department) => Object.values(department))

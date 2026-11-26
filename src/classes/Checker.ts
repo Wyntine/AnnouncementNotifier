@@ -75,7 +75,7 @@ export class Checker {
     //
     // TODO: I can use a secondary database to check if initialization is complete for
     // TODO: each parser.
-    const siteData = await request.body.text();
+    const siteData = await parser.decodeBody(request);
     return (await parser.parse(siteData, this.testModeLimit)).map(
       (announcement) => ({
         ...announcement,

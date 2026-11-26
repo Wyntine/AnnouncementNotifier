@@ -38,7 +38,7 @@ export function parseLinkByType(
     (prev, link) => {
       if (isLinkAFile(link) || fileUrls?.includes(link)) {
         prev.files.push(link);
-      } else {
+      } else if (!isIgnoredLink(link)) {
         prev.links.push(link);
       }
 
@@ -53,6 +53,14 @@ export function parseLinkByType(
   if (result.links.length) resultObj = { ...resultObj, links: result.links };
 
   return resultObj;
+}
+
+// Links that are never useful for the announcements (e.g. phone numbers).
+export function isIgnoredLink(link: string): boolean {
+  if (link.startsWith("tel:")) return true;
+  if (link.startsWith("http://") || link.startsWith("https://")) return false;
+  // Other exception links (e.g. mailto:) are meaningful, keep them.
+  return !linkHasException(link);
 }
 
 // TODO: Find a better way to filter for attachment extensions in the future
